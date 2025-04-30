@@ -1,0 +1,116 @@
+// ************************************ Time Complexity and o notation *******
+
+
+ // 1. Time Complextiy : - mena measure in  how much time the code excute and which method is fast or which method is slow 
+ 
+ 
+//  ex : -    const abcd(arr){
+//           for (let i = 0; i < arr.length; i++) {              4 OPEARTION
+//             if(i === 3){           
+//                  return arr[i]
+//             }
+//           }
+//  }
+
+//     let array = [1,2,3,4,5,6]                                
+//       console.log(abcd(array))
+
+
+
+
+//   another Example : -   
+//                       const  abcd(arr){
+//                          return arr[3]                          1 OPEATION
+//                       }
+//                      let array = [1,2,3,4,5,6]
+//                       console.log(abcd(array));
+
+
+// you see in this example we return array of element 4 but i am for loop in the first code and in the second code we directly return arr of 4 so in this th etime complexity is less of code 2 because this only return arr of 4 rather than the first exmaple check every value but i need only 4 value so its time complexity is high 
+
+
+//   ** NOTE :-      
+                 //  TIME COMPELEXITY IS MAILY DEPEND ON HOW MUCH OPERATION IS DOING A CODE OR THE VALUE OF OPERATION IS CONSTENT  LIKE IN THE FIRST EXAMPLE THE CODE DOING 4 OPERATION BUT IN THE SECOND EXAMPLE THE CODE ONLY DOING ONE OPERATION AND IN FIRST EXAMPLE WHEN WE PASS A BIG ARRAY THE OPEARITON VALUE IS INCREASE BUT IN THE SECOND OPERATION VALUE DOES NOT CHANGE WHEATHER WE GIVING A BIG NUMBER THE OPERATION VALUE IS CONSTENT  
+
+
+
+    // lets talk about on another example 
+
+   // Ex : -   
+            //  funcation sumOperation(n){
+            //      return (n * (n + 5) / 2)                 3 OPEARTION
+            //  }                                          O(1) TIME COMPELEXITY
+
+           //  console.log(sumOperation(2));
+
+    //  EXPLANING : - 
+                       //  IN THIS CODE WE ARE DOING 3 OPERATION AND AFTER IT WE RETURN IT OR THIS CODE HAVE CONSTENT OPERATION LIKE IF YOU PROVIDE A NUMBER LIKE 2 IT DOING ONLY 3 OPERATION OR IF YOU PROVIDE 1000 IT DOING 3 OPERATION HIS OPERATION VALUE IS CONSTENT      
+
+
+
+    //  Ex 2 : -  
+     
+    //          funcation sumOperation(n){
+    //        console.log("going Forwarding")               5 OPERATION 
+
+    //             for (let i = 0; i < n; i++) {           O(N) TIME COMPELEXITY
+    //               console.log(i);
+    //             }
+
+    //             console.log("in the middle");
+                
+
+    //             for (let j = n - 1; j >= 0; i--) {
+    //                 console.log(j);
+    //               }
+
+    //               console.log("ending");
+                  
+    //          }
+     
+    // EXPLAINING : - 
+                        // IN THIS CODE WE HAVE TWO FOR LOOP AND I THREE CONSOLE THIS CODE DOING 5 OPERATION AND BUT THIS CODE DONT HAVE CONSTENT OPERATION MEAN IF WE PROVIDE 2 TO THIS CODE HIS OPERATION IS 5 BUT IF I PROVIDE A BIG VALUE THEN HIS OPERATION VALUE WILL BE CHANGED BECAUS OF THE LOOP BECAUSE LOOP RUN EVERY TIME 
+
+
+    // RESULT : -   
+                      // SO FROM THIS TWO EXAMPLE THE FIRST ONE HAVE GOOD TIME COMPLIXITY FIRST ONE HAVE O(1) TIME COMPLIXITY WHICH MEAN THIS OPERAITON VALUE IS CONSTENT DOESNT MATTER THE VALUE IS BIG OR SMALL IT DOING ONLY 3 OPERATION OR IN THE SECOND CODE HAVE 5 OPEARTION AND CHANGE DEPEND ON THE NUMBER OF GIVEN BELOW THE NUMBER IS BIG THE OPERTION VLAUE INCREASE SO CODE SECOND HAVE O(N) TIME COMPLIXITY BECAUSE THIS OPERATION DEPENDS ON THE NUMBER OF GIVEN BELOW 
+
+    // O(1) : - THIS IS EXCELLENT  MEAN THE CODE IN WHICH THE OPEARTION VALUE IS CONSTENT HAVE O(1) TIME COMPLIXITY 
+    
+    // O(N) : - THIS IS BETTER MEAN THE CODE IN WHICH THE OPETAION IS DEPENDS ON THE NUMBER OF GIVEN BELOW HAVE O(N) COMPLIXITY
+
+    // O(N^2) : THIS IS GOOD TIME COMPLEXITY 
+
+
+
+
+    // 2.   funcation time(n){
+    //     for (let i = 0; i < n; i++) {
+    //        for (let j = 0; j < n j++) {
+    //        console.log(i , j);
+    //        }
+            
+    //     }
+    // }
+
+    // console.log(time(2));      
+
+    // OUTPUT : -    
+    
+    //     if N = 2   0 , 0
+    //                0 , 1               
+    //                1 , 0
+    //                1 , 1
+
+        
+    //     if N = 3   1,0
+    //                1,1
+    //                1,2
+    //                2,0
+    //                2,1
+    //                2,2 
+
+
+    // EXPLAINING : -  
+                       // IN THIS CODE WE PRINT THE LOOP NUMBER FOR GIVEN NUMBER OR WHEN WE PROVIDE THE N IS 2 THE OPERATION VLAUE IS 4 OR WHEN WE PROVIDE N IS 3 THE OPERATION VALUE IS 9 SO THE OPERATION VLAUE CHANGE ACCORDING TO SQUARE 2 SQUARE IS 4 AND 3 SQUARE IS 9 SO THIS CODE HAS TIME COMPLEXITY O(N ^ 2) MEAN SQUARE OF N 
+    
