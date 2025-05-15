@@ -66,3 +66,12 @@
 
     // EXPLAINATION : - 
                           //THIS EXAMPLE HAS O(N ^ 2) SPACE COMPLEXITY BECAUSE IF I AM PASS 2 IF RETURN 4 ARRAY IF AM PASS 10 THEN IT RETURN 100 ARRAY 
+
+
+
+
+
+
+
+// *********************** question ************************
+
