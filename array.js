@@ -97,18 +97,119 @@
 
 // ***************** QUESTION **********************
 
-// 1. FIND THE SECOND LARGEST NUMBER FROM AN ARRAY \
+// 1. FIND THE SECOND LARGEST NUMBER FROM AN ARRAY WITHOUT OPTMIZATION
 
   let arr = [10,2,4,1,5];
 
-  let index = 0
-  let firstNumber = arr[0]
-  let secondNumber = arr[1]
+  const secondLargestNumW = () => {
+for (let i = 0; i < arr.length; i++) {                // o(n)
+    
+    let uniqueArray = Array.from(new Set(arr))
 
-  arr.forEach((item) => {
-     if(item > firstNumber){
-         firstNumber = item
-     }else{
+    uniqueArray.sort((a, b) =>  b-a)           // sort always have o(nlogn)
 
+    if(uniqueArray.length >= 2){
+      return uniqueArray[1]
+    }else{
+      return -1
+    }
+    
+  }
+  }
+  
+  // this logic has o(nlogn) time complexity
+  // console.log(secondLargestNumW(arr))
+
+
+
+// 1. FIND THE SECOND LARGEST NUMBER FROM AN ARRAY WITH OPTMIZATION
+
+
+
+  let largest = arr[0]
+  let secondLargest = arr[1]
+
+  const secondLargestNum = (arr) => {
+          for (let i = 0; i < arr.length; i++) {            // o(n)
+             if(arr[i] > largest){
+                secondLargest = largest
+                largest = arr[i]
+             }else if(arr[i] !== largest && arr[i] > secondLargest){
+              secondLargest = arr[i]
+             }
+          }
+
+          return secondLargest
+   } 
+
+   // this logic has o(n) time complexity so this is optimize than the first logic  
+  //  console.log(secondLargestNum(arr))
+
+
+
+// 2. rotate the array element to the right by k step 
+
+  // let array = [10,2,8,4,7,5,9,6];
+
+  // const rotateArray = (arr , times) => {
+
+  //   let size  = arr.length
+  //   let newarray = arr.slice(size - times , size)        // o(n)
+  //    let arrr = [...newarray , ...arr ]
+     
+  //    return arrr
+      
+  // }
+
+  // // this logic have o(n) time complexity
+  // console.log(rotateArray(array , 5))
+
+
+// NOW DOING WITHOUT THE INBUILT METHOD OF THE ARRAY 
+
+
+  const rotateArrayOptmised = (arr , k) => {
+    let size = arr.length
+
+    if( size > k){
+       k = k % size
+    }
+
+    reverseArray(arr , 0 ,arr.length - 1)
+    reverseArray(arr , 0 ,k - 1)
+    reverseArray(arr , k ,arr.length - 1 )
+
+   return arr
+  }
+
+  const reverseArray= (arr , left , right) => {
+          while(left <= right){
+     temp = arr[left]
+     arr[left++] = arr[right]
+     arr[right--] = temp
+
+   }
+  }
+
+  // time complexity of this code is o(n)
+  // console.log(rotateArrayOptmised([1,2,3,4,5,6,7] , 3));
+  
+
+//  REMOVE DEPLICATE FROM AN SORTED ARRAY  IN ASCENDING ORDER 
+
+// non optimised way 
+ const removeDuplicate = (arr) => {
+   console.log(arr.splice(3 , 2))
+     let number = 0
+     let start = 1
+     let duplicate = arr[start]
+     
+     for (let i = 0; i < arr.length; i++) {
+        if(arr[i] == duplicate){
+           arr.slice
+        }
+      
      }
-  })
+ }
+
+ console.log(removeDuplicate([1,1,2,3,4,4,5]))
