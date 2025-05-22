@@ -99,23 +99,23 @@
 
 // 1. FIND THE SECOND LARGEST NUMBER FROM AN ARRAY WITHOUT OPTMIZATION
 
-  let arr = [10,2,4,1,5];
+  // let arr = [10,2,4,1,5];
 
-  const secondLargestNumW = () => {
-for (let i = 0; i < arr.length; i++) {                // o(n)
+//   const secondLargestNumW = () => {
+// for (let i = 0; i < arr.length; i++) {                // o(n)
     
-    let uniqueArray = Array.from(new Set(arr))
+//     let uniqueArray = Array.from(new Set(arr))
 
-    uniqueArray.sort((a, b) =>  b-a)           // sort always have o(nlogn)
+//     uniqueArray.sort((a, b) =>  b-a)           // sort always have o(nlogn)
 
-    if(uniqueArray.length >= 2){
-      return uniqueArray[1]
-    }else{
-      return -1
-    }
+//     if(uniqueArray.length >= 2){
+//       return uniqueArray[1]
+//     }else{
+//       return -1
+//     }
     
-  }
-  }
+//   }
+//   }
   
   // this logic has o(nlogn) time complexity
   // console.log(secondLargestNumW(arr))
@@ -126,21 +126,21 @@ for (let i = 0; i < arr.length; i++) {                // o(n)
 
 
 
-  let largest = arr[0]
-  let secondLargest = arr[1]
+  // let largest = arr[0]
+  // let secondLargest = arr[1]
 
-  const secondLargestNum = (arr) => {
-          for (let i = 0; i < arr.length; i++) {            // o(n)
-             if(arr[i] > largest){
-                secondLargest = largest
-                largest = arr[i]
-             }else if(arr[i] !== largest && arr[i] > secondLargest){
-              secondLargest = arr[i]
-             }
-          }
+  // const secondLargestNum = (arr) => {
+  //         for (let i = 0; i < arr.length; i++) {            // o(n)
+  //            if(arr[i] > largest){
+  //               secondLargest = largest
+  //               largest = arr[i]
+  //            }else if(arr[i] !== largest && arr[i] > secondLargest){
+  //             secondLargest = arr[i]
+  //            }
+  //         }
 
-          return secondLargest
-   } 
+  //         return secondLargest
+  //  } 
 
    // this logic has o(n) time complexity so this is optimize than the first logic  
   //  console.log(secondLargestNum(arr))
@@ -168,48 +168,183 @@ for (let i = 0; i < arr.length; i++) {                // o(n)
 // NOW DOING WITHOUT THE INBUILT METHOD OF THE ARRAY 
 
 
-  const rotateArrayOptmised = (arr , k) => {
-    let size = arr.length
+  // const rotateArrayOptmised = (arr , k) => {
+  //   let size = arr.length
 
-    if( size > k){
-       k = k % size
-    }
+  //   if( size > k){
+  //      k = k % size
+  //   }
 
-    reverseArray(arr , 0 ,arr.length - 1)
-    reverseArray(arr , 0 ,k - 1)
-    reverseArray(arr , k ,arr.length - 1 )
+  //   reverseArray(arr , 0 ,arr.length - 1)
+  //   reverseArray(arr , 0 ,k - 1)
+  //   reverseArray(arr , k ,arr.length - 1 )
 
-   return arr
-  }
+  //  return arr
+  // }
 
-  const reverseArray= (arr , left , right) => {
-          while(left <= right){
-     temp = arr[left]
-     arr[left++] = arr[right]
-     arr[right--] = temp
+  // const reverseArray= (arr , left , right) => {
+  //         while(left <= right){
+  //    temp = arr[left]
+  //    arr[left++] = arr[right]
+  //    arr[right--] = temp
 
-   }
-  }
+  //  }
+  // }
 
   // time complexity of this code is o(n)
   // console.log(rotateArrayOptmised([1,2,3,4,5,6,7] , 3));
   
 
-//  REMOVE DEPLICATE FROM AN SORTED ARRAY  IN ASCENDING ORDER 
+// 3.   REMOVE DEPLICATE FROM AN SORTED ARRAY  IN ASCENDING ORDER 
 
 // non optimised way 
- const removeDuplicate = (arr) => {
-   console.log(arr.splice(3 , 2))
-     let number = 0
-     let start = 1
-     let duplicate = arr[start]
+//  const removeDuplicate = (arr) => {
+//    console.log(arr.splice(3 , 2))
+//      let number = 0
+//      let start = 1
+//      let duplicate = arr[start]
      
-     for (let i = 0; i < arr.length; i++) {
-        if(arr[i] == duplicate){
-           arr.slice
-        }
+//      for (let i = 0; i < arr.length; i++) {
+//         if(arr[i] == duplicate){
+//            arr.slice
+//         }
       
-     }
- }
+//      }
+//  }
 
- console.log(removeDuplicate([1,1,2,3,4,4,5]))
+//  console.log(removeDuplicate([1,1,2,3,4,4,5]))
+
+// 4 .  You are given an array called arr[] that has n - 1 numbers.
+//      These numbers are all different, and they are in the range from 1 to n.
+
+// That means:
+
+// You should have had n numbers total.
+
+// But one number is missing.
+
+// Your task is to find the missing number.
+
+// first lets descious unoptimized way \
+
+
+    //  let arr = [1,2,4,5]
+    //  let biggest = arr[0];
+    //  let missingNumber = 0;
+// const array = new Array(biggest).fill(false); 
+//      const findMissingNumber = (arr , array) => {
+//         for (var k = 0; k < arr.length; k++) {
+//             if (arr[k] > biggest) {
+//                 biggest = arr[k];
+//             }
+//         }
+
+//         for (var j = 0; j < arr.length; j++) {
+//             array[arr[j] - 1] = true;
+//         }
+
+//         for (var m = 0; m < array.length; m++) {
+//             if (!array[m]) {
+//                 missingNumber = m + 1;
+//                 break; // Optional: stop once found
+//             }
+//         }
+
+//         return missingNumber;
+//       }
+
+      // console.log(findMissingNumber(arr , array))
+
+
+  // ****************** OPTIMISED WAY ***************
+  
+//   function findMissingNumber(arr) {
+//     let n = arr.length + 1;
+//     let expectedSum = (n * (n + 1)) / 2;
+//     let actualSum = 0;
+
+//     for (let i = 0; i < arr.length; i++) {
+//         actualSum += arr[i];
+//     }
+
+//     return expectedSum - actualSum;
+// }
+// console.log(findMissingNumber([1, 2, 4, 5])); // Output: 3
+
+
+// 5.  MOVE ALL THE ZERO TO THE RIGHT 
+
+// UNOPTIMISED WAY 
+
+// let arr = [0, 1, 0, 3, 12]
+// let index = 0
+// let i = 0
+// while (index < arr.length -1) {
+//  if(arr[index] == 0){
+//   if(arr[index + 1] !== 0){
+//  let temp = arr[index + 1]
+//     arr[index+1] = arr[i]
+//     arr[i] = temp
+//     i++
+//   }
+   
+//  }else{
+// i++
+//  }
+//   index += 1
+  
+// }
+// console.log(arr);
+
+
+// OPTMISED WAY 
+// let arr = [1,2,0,4,0,0,5,0,8];
+// let i = 0;
+
+// for (let j = 0; j < arr.length; j++) {
+//   if (arr[j] !== 0) {
+//     let temp = arr[i];
+//     arr[i] = arr[j];
+//     arr[j] = temp;
+//     i++;
+//   }
+// }
+// console.log(arr);
+
+// 6.  REVERSE AN ARRAY 
+// UNOPTIMISED WAY 
+  //  let arr = [1,2,3,4,5]
+  //  arr.reverse()
+  //  console.log(arr);
+
+// OPTMISED WAY
+// let arr = [1,2,3,4,5]
+// let j = 0
+// for(let i = arr.length -1 ; i > j ; i-- , j++ ){
+//           let temp  = arr[j]
+//           arr[j] = arr[i]
+//           arr[i] = temp
+              
+//         }
+//         console.log(arr);
+
+// 7. 
+let arr= [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+let d = 3   
+ let number = arr.length - (Math.floor( d%arr.length)) 
+
+        
+        for(let i = 0 ;  i < arr.length  ; i++ ){
+          if(i < d){
+            let temp = arr[number]
+            arr[number] = arr[i]
+            arr[i] = temp
+            number++
+          }
+           
+        }
+    
+      
+        
+   console.log(arr , number);
+   
