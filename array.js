@@ -328,23 +328,123 @@
 //         }
 //         console.log(arr);
 
-// 7. 
-let arr= [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
-let d = 3   
- let number = arr.length - (Math.floor( d%arr.length)) 
+// 7. set the starting element to the back n time 
+// let arr= [1, 2, 3, 4, 5]
+// let d = 3   
+// let index = arr.length - 1
+//  let number = Math.floor( d%arr.length) 
+// console.log(number);
+// let j = 0
 
         
-        for(let i = 0 ;  i < arr.length  ; i++ ){
-          if(i < d){
-            let temp = arr[number]
-            arr[number] = arr[i]
-            arr[i] = temp
-            number++
-          }
-           
-        }
+//         for(let i = arr.length - 1 ;  i > j  ; i-- , j++ ){
+//             let temp = arr[i]
+//             arr[i] = arr[j]
+//             arr[j] = temp
+//         }
+//         console.log(arr , 'first');
+//         j = 0
+
+        
+        
+//         for (let k = index - d ; k > j  ; k-- , j++) {
+//           let temp = arr[k]
+//           arr[k] = arr[j]
+//           arr[j] = temp
+          
+//         }
+        
+//         console.log(arr , 'second');
+
+        
+
+//         for (let m = arr.length - 1 ; m > number ; m-- , number++) {
+//             let temp = arr[number]
+//             arr[number] = arr[m]
+//             arr[m] = temp
+          
+//         }
     
+
       
         
-   console.log(arr , number);
+//    console.log(arr , 'third');
+
+// 8. You are given an array arr of positive integers. Your task is to find all the leaders in the array. An element is considered a leader if it is greater than or equal to all elements to its right. The rightmost element is always a leade
+
+// unoptmised
+
+//  let arr = [16, 17, 4, 3, 5, 2]
+//  let index = 1;
+//  let indexfor = 0
+
+
+//  const largestRight  = (arr , index , indexfor) => {
+
+//    for (let i = 0; i < arr.length - 1  ;) {
+    
+//    let leader = false
+     
+//      if(arr[i] >= arr[index]){
+       
+//        leader = true
+//        console.log(arr[i] , arr[index]  , index,  'biggest');
+//      index++
+
+//    }else{
+//      console.log("else" , arr[i] , arr[index]);
+//     i++
+//     index = i + 1
+    
+    
+//    }
+
+//    if(index > arr.length - 1 && leader){
+//      console.log("biggest element is " , arr[i] , index , leader); 
+//      arr[indexfor] = arr[i]
+//     i++
+//     index = i+ 1
+//     indexfor++
    
+//   }
+  
+
+
+    
+    
+//    }
+//         arr[indexfor] = arr[arr.length - 1];
+//         indexfor++
+//    arr.length = indexfor
+//    return arr
+//  }
+//    console.log(largestRight(arr , index , indexfor));
+   
+
+// optmised
+// let arr =[10, 4, 2, 4, 1]
+//     let n = arr.length
+//     let maxRight = arr[n-1]
+//     let index = n - 1
+// function findLeaders(arr) {
+//     for(let i = n - 2 ; i >= 0 ; i--){
+//        if(arr[i] >= maxRight){
+//           maxRight = arr[i]
+//           arr[--index] = arr[i]
+//        }
+//     }
+
+//     let k = 0
+//     for(let j = index ; j < n ; j++){
+//       arr[k++] = arr[j]
+//     }
+
+//     arr.length = k
+   
+//      console.log(index);
+     
+//     return arr
+// }
+
+// console.log(findLeaders(arr))
+
