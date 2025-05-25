@@ -448,3 +448,62 @@
 
 // console.log(findLeaders(arr))
 
+// 9.  Given an array arr of integers, find all the elements that occur more than once in the array. If no element repeats, return an empty array.
+
+// UNOPTIMISED WAY 
+// let arr = [1 ,8 ,4, 3 ,6 ,9 ,5 ,7, 2, 7 ,0]
+
+// const findDuplicate = (arr) => {
+//    let index = 1
+//    let duplicate = 0
+
+//    for (let i = 0; i < arr.length -1 ;) {
+//     if(arr[i]  == arr[index]){
+//         arr[duplicate++] = arr[i]
+//         i++
+//         index = i + 1
+//     }else{
+//       index++
+//     }
+
+//      if(index >= arr.length){
+//       console.log("reset" , arr[index] , index);
+//       i++
+//       index = i+1
+//     }
+
+//    }
+//   arr.length = duplicate
+   
+//    return arr
+// }
+
+// console.log(findDuplicate(arr));
+
+// OPTIMISED WAY 
+// const findDuplicate = (arr) => {
+
+//   let result = []
+//      let freq = {}
+     
+//      for(let i = 0 ; i < arr.length ; i++){
+//          let value = arr[i]
+//        if(freq[value]){
+//            freq[value] += 1 
+//        }else{
+//            freq[value] = 1
+//        }
+//      } 
+//      for(let key in freq){
+//          if (freq[key] > 1) {
+//                 result.push(Number(key));
+//             }
+//      }
+//      return result
+//   }
+
+//   console.log(findDuplicate(arr));
+  
+     
+
+      
