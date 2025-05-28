@@ -138,7 +138,7 @@ function reverse(str) {
     return reverse(str.substr(1)) + str.charAt(0);
   }
 }
-console.log(reverse("hello"));
+// console.log(reverse("hello"));
 
 // its remove first element from a string and add them into the end
 // hello  =  ello + h = >  elloh
@@ -150,23 +150,85 @@ console.log(reverse("hello"));
 
 // let nums = [1,2,3]  => [[] , [1] , [1,2] , [2] , [3] , [1,3] , [2,3] , [1,2,3]]
 
-function subSet(nums) {
-  let result = [];
-  let temp = [];
+// function subSet(nums) {
+//   let result = [];
+//   let temp = [];
 
-  function recursionSubset(nums, i) {
-    if (i === nums.length) {
-      return result.push([...temp]);
+//   function recursionSubset(nums, i) {
+//     if (i === nums.length) {
+//       return result.push([...temp]);
+//     }
+
+//     temp.push(nums[i]);
+//     recursionSubset(nums, i + 1);
+//     temp.pop();
+//     recursionSubset(nums, i + 1);
+//   }
+
+//   recursionSubset(nums, 0);
+//   return result;
+// }
+
+// console.log(subSet([1,2,3]));
+
+
+// function printNum(n){
+//     if(n == 0) return 
+//         console.log(n)
+//        printNum(n  -1 )
+// }
+
+// printNum(10)
+
+class Solution {
+        constructor(){
+            this.middleLength = 0 
+        }
+        
+        push(element){
+            this.result.push(element)
+        }
+        
+        size(arr){
+            return arr.length - 1
+        }
+        
+        isEmpty(arr){
+            return this.size(arr) === 0
+        }
+       
+       middleElement(arr){
+           return this.middleLength =  arr.length -  Math.floor((arr.length + 1 )/2)
+       }
+       
+       
+       removeElement(arr , length){
+        console.log(this.middleLength , length , arr);
+        
+           if(this.isEmpty(arr)){
+               return 'arr is empty'
+           }
+           if(length < 0) return arr
+           
+           if(this.middleLength !== length){
+               return arr[length]
+           }else if(this.middleElement == length){
+              arr.splice(this.middleElement , 1)
+           }
+           
+           return this.removeElement(arr , length - 1)
+           
+           
+       }
+
+    deleteMid(s) {
+        // code here
+        this.middleElement(s)
+       return this.removeElement(s, this.size(s))
+        
     }
-
-    temp.push(nums[i]);
-    recursionSubset(nums, i + 1);
-    temp.pop();
-    recursionSubset(nums, i + 1);
-  }
-
-  recursionSubset(nums, 0);
-  return result;
 }
 
-console.log(subSet([1,2,3]));
+const d = new Solution()
+
+console.log(d.deleteMid([10, 20, 30, 40, 50]));
