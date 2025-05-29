@@ -171,64 +171,105 @@ function reverse(str) {
 
 // console.log(subSet([1,2,3]));
 
-
 // function printNum(n){
-//     if(n == 0) return 
+//     if(n == 0) return
 //         console.log(n)
 //        printNum(n  -1 )
 // }
 
 // printNum(10)
 
+6; // remove the mid element from an stack using recursion
 class Solution {
-        constructor(){
-            this.middleLength = 0 
-        }
-        
-        push(element){
-            this.result.push(element)
-        }
-        
-        size(arr){
-            return arr.length - 1
-        }
-        
-        isEmpty(arr){
-            return this.size(arr) === 0
-        }
-       
-       middleElement(arr){
-           return this.middleLength =  arr.length -  Math.floor((arr.length + 1 )/2)
-       }
-       
-       
-       removeElement(arr , length){
-        console.log(this.middleLength , length , arr);
-        
-           if(this.isEmpty(arr)){
-               return 'arr is empty'
-           }
-           if(length < 0) return arr
-           
-           if(this.middleLength !== length){
-               return arr[length]
-           }else if(this.middleElement == length){
-              arr.splice(this.middleElement , 1)
-           }
-           
-           return this.removeElement(arr , length - 1)
-           
-           
-       }
+  deleteMid(stack) {
+    const size = stack.length;
+    const midFromBottom = Math.floor((size + 1) / 2); // 1-based from bottom
+    const targetFromTop = size - midFromBottom + 1; // 1-based from top
 
-    deleteMid(s) {
-        // code here
-        this.middleElement(s)
-       return this.removeElement(s, this.size(s))
-        
-    }
+    const deleteHelper = (curr) => {
+      if (curr === targetFromTop) {
+        stack.pop(); // remove mid
+        return;
+      }
+
+      const top = stack[stack.length - 1];
+      stack.pop();
+
+      deleteHelper(curr + 1);
+
+      stack.push(top);
+    };
+
+    deleteHelper(1); // start recursion from top
+  }
 }
 
-const d = new Solution()
+// let d = new Solution();
+// console.log( d.deleteMid([10, 20, 30, 40]));
 
-console.log(d.deleteMid([10, 20, 30, 40, 50]));
+7; //  find the smallerst number after the index number is smallest then print it if not then set -1 at it place
+
+class print {
+  immediateSmaller(arr) {
+    // code here
+    this.printSmaller(arr, 0);
+    return arr;
+  }
+
+  printSmaller(arr, index) {
+    console.log(arr, index);
+
+    if (index == arr.length) {
+      arr[arr.length - 1] = -1;
+      return;
+    }
+
+    if (arr[index] > arr[index + 1]) {
+      arr[index] = arr[index + 1];
+    } else {
+      arr[index] = -1;
+    }
+
+    this.printSmaller(arr, index + 1);
+  }
+}
+
+8;
+
+let d = new print();
+// console.log( d.immediateSmaller([4, 1]));
+
+class para {
+  constructor() {
+    this.stack = [];
+  }
+  isBalanced(s) {
+    // code here
+    return this.checkPare(s , 0);
+  }
+
+  checkPare(arr, first) {
+    if (first >= arr.length){
+      return this.stack.length === 0;
+    }
+
+    if (arr[first] == "(" || arr[first] == "{" || arr[first] == "[") {
+      this.stack.push(arr[first]);
+    } else {
+      let top = this.stack[this.stack.length - 1];
+      if (
+        (arr[first] === ")" && top === "(") ||
+        (arr[first] === "}" && top === "{") ||
+        (arr[first] === "]" && top === "[")
+      ) {
+        this.stack.pop();
+      } else {
+        return false;
+      }
+    }
+
+    return this.checkPare(arr, first + 1);
+  }
+}
+let g = new para();
+console.log(g.isBalanced("([]"));
