@@ -249,27 +249,93 @@ class para {
   }
 
   checkPare(arr, first) {
-    if (first >= arr.length){
-      return this.stack.length === 0;
-    }
+   
 
-    if (arr[first] == "(" || arr[first] == "{" || arr[first] == "[") {
-      this.stack.push(arr[first]);
+    for (let i = 0; i < arr.length; i++) {
+      
+    if (arr[i] == "(" || arr[i] == "{" || arr[i] == "[") {
+      this.stack.push(arr[i]);
     } else {
+      
+      
       let top = this.stack[this.stack.length - 1];
+      console.log(top , arr[i] , this.stack);
       if (
-        (arr[first] === ")" && top === "(") ||
-        (arr[first] === "}" && top === "{") ||
-        (arr[first] === "]" && top === "[")
+        (arr[i] === ")" && top === "(") ||
+        (arr[i] === "}" && top === "{") ||
+        (arr[i] === "]" && top === "[")
       ) {
         this.stack.pop();
       } else {
         return false;
       }
     }
+      
+    }
 
-    return this.checkPare(arr, first + 1);
+    
+
+      return this.stack.length === 0;
+    
+   
   }
 }
 let g = new para();
-console.log(g.isBalanced("([]"));
+// console.log(g.isBalanced("([])"));
+
+class tree {
+    constructor(){
+        this.stack = []
+    }
+    findSpiral(root) {
+        // code here
+        this.reverse(root, 0 , 1)
+    }
+
+    
+    reverse(arr , start ,end){
+        if(start >= arr.length) return 
+       
+          
+          if(start%2 !== 0 && start > 1){
+             let m = end
+            if(end > arr.length){
+              m = arr.length - 1
+            }
+       
+       for (let i = start; i < m; i++ , m--) {
+        console.log(i , m , " in the loop");
+        
+         let temp = arr[i]
+         arr[i] = arr[m]
+         arr[m] = temp     
+       }
+
+
+
+          }
+
+        
+
+
+        
+
+  console.log(arr , start, end);
+
+        if(start == 0){
+           start += 1
+           end += 1
+        }else{
+             start += end
+             end *= start
+        }
+
+      
+        this.reverse(arr , start, end)
+        
+    }
+}
+
+const f = new tree()
+console.log(f.findSpiral([1, 2, "N", 4]));
+
