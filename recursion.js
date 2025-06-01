@@ -234,7 +234,7 @@ class print {
   }
 }
 
-8;
+8. // find the given string is valid paranthesis 
 
 let d = new print();
 // console.log( d.immediateSmaller([4, 1]));
@@ -245,97 +245,175 @@ class para {
   }
   isBalanced(s) {
     // code here
-    return this.checkPare(s , 0);
+    return this.checkPare(s, 0);
   }
 
   checkPare(arr, first) {
-   
-
     for (let i = 0; i < arr.length; i++) {
-      
-    if (arr[i] == "(" || arr[i] == "{" || arr[i] == "[") {
-      this.stack.push(arr[i]);
-    } else {
-      
-      
-      let top = this.stack[this.stack.length - 1];
-      console.log(top , arr[i] , this.stack);
-      if (
-        (arr[i] === ")" && top === "(") ||
-        (arr[i] === "}" && top === "{") ||
-        (arr[i] === "]" && top === "[")
-      ) {
-        this.stack.pop();
+      if (arr[i] == "(" || arr[i] == "{" || arr[i] == "[") {
+        this.stack.push(arr[i]);
       } else {
-        return false;
+        let top = this.stack[this.stack.length - 1];
+        console.log(top, arr[i], this.stack);
+        if (
+          (arr[i] === ")" && top === "(") ||
+          (arr[i] === "}" && top === "{") ||
+          (arr[i] === "]" && top === "[")
+        ) {
+          this.stack.pop();
+        } else {
+          return false;
+        }
       }
     }
-      
-    }
 
-    
-
-      return this.stack.length === 0;
-    
-   
+    return this.stack.length === 0;
   }
 }
 let g = new para();
 // console.log(g.isBalanced("([])"));
 
+
+9.//  reverse the  array element like this reverse first element to right to left then second element to left to right and third elemnt to right to left in these option a condition in the first iteration take 1 element then 2 then 4 then 8 like this
 class tree {
-    constructor(){
-        this.stack = []
+  constructor() {
+    this.stack = [];
+  }
+  findSpiral(root) {
+    // code here
+    this.reverse(root, 0, 1);
+  }
+
+  reverse(arr, start, end) {
+    if (start >= arr.length) return;
+
+    if (start % 2 !== 0 && start > 1) {
+      let m = end;
+      if (end > arr.length) {
+        m = arr.length - 1;
+      }
+
+      for (let i = start; i < m; i++, m--) {
+        console.log(i, m, " in the loop");
+
+        let temp = arr[i];
+        arr[i] = arr[m];
+        arr[m] = temp;
+      }
     }
-    findSpiral(root) {
+
+    console.log(arr, start, end);
+
+    if (start == 0) {
+      start += 1;
+      end += 1;
+    } else {
+      start += end;
+      end *= start;
+    }
+
+    this.reverse(arr, start, end);
+  }
+}
+
+const f = new tree();
+// console.log(f.findSpiral([1, 2, "N", 4]));
+
+
+10. //A total of n people are standing in a circle, and you are one of them playing a game. Starting from a person, k persons will be counted in order along the circle, and the kth person will be killed. Then the next k persons will be counted along the circle, and again the kth person will be killed. This cycle will continue until only a single person is left in the circle.
+
+// If there are 5 people in the circle in the order A, B, C, D, and E, you will choose k=3. Starting from A, you will count A, B and C. C will be the 3rd person and will be killed. Then you will continue counting from D, E and then A. A will be third person and will be killed. 
+
+// You will be given an array where the first element is the first person from whom the counting will start and the subsequent order of the people. You want to be the last one standing. Determine the index at which you should stand to survive the game. Return an integer denoting safe position. 
+class Remove {
+  josephus(n, k) {
+    const res = [];
+    for (let i = 1; i <= n; i++) {
+      res.push(i);
+    }
+
+    return this.delete(res, k, 0, 0);
+  }
+
+  delete(arr, k, killer, runner) {
+    if (arr.length === 1) return arr[0]; // return the last person
+
+    if (runner >= arr.length) {
+      runner = 0; // wrap around
+    }
+
+    if (killer === k - 1) {
+      arr.splice(runner, 1); // eliminate the k-th person
+      killer = 0;
+    } else {
+      runner++;
+      killer++;
+    }
+
+    return this.delete(arr, k, killer, runner);
+  }
+}
+
+const r = new Remove();
+// console.log(r.josephus(5, 2)); // Should return 3
+
+
+11. // reverse  a string using stack  
+class reve {
+ reverse(s) {
         // code here
-        this.reverse(root, 0 , 1)
-    }
-
-    
-    reverse(arr , start ,end){
-        if(start >= arr.length) return 
-       
-          
-          if(start%2 !== 0 && start > 1){
-             let m = end
-            if(end > arr.length){
-              m = arr.length - 1
-            }
-       
-       for (let i = start; i < m; i++ , m--) {
-        console.log(i , m , " in the loop");
+      let stack = []
+      let reverse = ''
+      for (let i = 0; i < s.length; i++) {
+         stack.push(s[i]);
         
-         let temp = arr[i]
-         arr[i] = arr[m]
-         arr[m] = temp     
-       }
+      }
 
+      while(stack.length > 0){
+         reverse += stack.pop()
+      }
 
-
-          }
-
-        
-
-
-        
-
-  console.log(arr , start, end);
-
-        if(start == 0){
-           start += 1
-           end += 1
-        }else{
-             start += end
-             end *= start
-        }
-
-      
-        this.reverse(arr , start, end)
+      return reverse
         
     }
 }
 
-const f = new tree()
-console.log(f.findSpiral([1, 2, "N", 4]));
+const re = new reve();
+// console.log(re.reverse("GeeksforGeeks"));
+
+// 11. Given an array of negative and non-negative integers. You have to make the array beautiful. An array is beautiful if two adjacent integers, arr[i] and arr[i+1] are either negative or non-negative. And you can do the following operation any number of times until the array becomes beautiful.
+
+// If two adjacent integers are different i.e. one of them is negative and other is non-negative, remove them.
+// Return the beautiful array after performing the above operation.
+
+// Note:An empty array is also a beautiful array. There can be many adjacent integers which are different as stated above. So remove different adjacent integers as described above from left to right.
+
+
+class negative {
+    // Function to make the given array beautiful.
+    makeBeautiful(arr) {
+        let stack = []
+       for (let i = 0; i < arr.length; i++) {
+    
+        
+        
+        if(i == arr.length - 1 && arr[i] > 0 &&  arr[i+1] > 0 || arr[i] < 0 && arr[i+1] < 0 ){
+           stack.push(arr[i])
+        }else{
+          if(arr[i] > 0 &&  arr[i+1] > 0 || arr[i] < 0 && arr[i+1] < 0  ){
+           stack.push(arr[i])
+        }
+        }
+       
+         
+    
+       }
+
+       
+            return stack
+    }
+}
+
+const n = new negative()
+console.log(n.makeBeautiful([1,10]));
 
