@@ -381,7 +381,7 @@ class reve {
 const re = new reve();
 // console.log(re.reverse("GeeksforGeeks"));
 
-// 11. Given an array of negative and non-negative integers. You have to make the array beautiful. An array is beautiful if two adjacent integers, arr[i] and arr[i+1] are either negative or non-negative. And you can do the following operation any number of times until the array becomes beautiful.
+11.//  Given an array of negative and non-negative integers. You have to make the array beautiful. An array is beautiful if two adjacent integers, arr[i] and arr[i+1] are either negative or non-negative. And you can do the following operation any number of times until the array becomes beautiful.
 
 // If two adjacent integers are different i.e. one of them is negative and other is non-negative, remove them.
 // Return the beautiful array after performing the above operation.
@@ -391,22 +391,13 @@ const re = new reve();
 
 class negative {
     // Function to make the given array beautiful.
+    constructor(){
+      this.stack = []
+    }
     makeBeautiful(arr) {
-        let stack = []
-       for (let i = 0; i < arr.length; i++) {
-    
         
-        
-        if(i == arr.length - 1 && arr[i] > 0 &&  arr[i+1] > 0 || arr[i] < 0 && arr[i+1] < 0 ){
-           stack.push(arr[i])
-        }else{
-          if(arr[i] > 0 &&  arr[i+1] > 0 || arr[i] < 0 && arr[i+1] < 0  ){
-           stack.push(arr[i])
-        }
-        }
-       
-         
-    
+       for (let i = 0; i < arr.length; i++) { 
+            
        }
 
        
@@ -414,6 +405,184 @@ class negative {
     }
 }
 
-const n = new negative()
-console.log(n.makeBeautiful([1,10]));
+// const n = new negative()
+// console.log(n.makeBeautiful([1,10]));
+
+
+12.// make a fabonacci number which mean is 1+1+2+3+4+5 = mean 1+1=2+1=3+2=5+3=8 like this for n number
+class fabi {
+    constructor(){
+      this.f1 = 0
+      this.f2 = 1
+      this.temp 
+    }
+    fibonacci(n) {
+        // Code here
+       
+        if(n == 0){
+          return 0
+        }else{
+           for (let i = n; i > 1; i--) {
+            
+            this.temp = this.f2
+            this.f2 += this.f1
+            this.f1 = this.temp
+            
+           }
+
+           return this.f2
+        }
+       
+    }
+    
+   
+    
+    
+    
+}
+const n = new fabi()
+// console.log(n.fibonacci(4));
+
+
+
+13. // count how many element present in interger ex 253 output = 3
+class num {
+    countDigits(n) {
+        // code here
+    let str =  n.toString()
+      
+      
+      
+        let number = 0
+          for (let i = 0; i < str.length; i++) {            
+           number += 1
+          }
+        
+        return number
+       
+    }
+}
+const nu = new num()
+// console.log(nu.countDigits(425));
+
+
+13.// add all the digit of the interger ex = 99999 output = 45
+
+class sum {
+    // sumOfDigits(n) {
+    //     // code here
+         
+    //      let str = n.toString()
+    //      let number = 0
+    //      console.log(str);
+         
+    //      for(let i = 0 ; i < str.length ; i++){    
+    //          number += Number(str[i])
+    //      }
+         
+    //      return number
+    // }
+    
+    constructor(){
+          this.stack = []
+      }
+      insertAtBottom(st, x) {
+      console.log(st.length);
+      
+      return this.add(st , x )
+    
+      
+      }
+
+      add(st , x , index){
+        
+        if(st.length == 0){
+           this.stack.push(x)
+           return
+        }
+        
+        let last = st[st.length - 1]
+        st.pop()
+
+
+        this.add(st , x , index + 1)
+        
+        this.stack.push(last)
+        
+          return this.stack
+      }
+  }
+
+  const su = new sum()
+  // console.log(su.insertAtBottom([5,3,1], 4));
+
+
+
+
+  14. // insert the number at the bottom of the stack or print it
+
+
+  class sm {
+  
+    
+    constructor(){
+          this.stack = []
+      }
+      insertAtBottom(st, x) {
+      console.log(st.length);
+      
+      return this.add(st , x )
+    
+      
+      }
+
+      add(st , x , index){
+        
+        if(st.length == 0){
+           this.stack.push(x)
+           return
+        }
+        
+        let last = st[st.length - 1]
+        st.pop()
+
+
+        this.add(st , x , index + 1)
+        
+        this.stack.push(last)
+        
+          return this.stack
+      }
+  }
+
+  const sf = new sm()
+  // console.log(sf.insertAtBottom([5,3,1], 4));
+  
+
+  class reveStr {
+    constructor(){
+          this.stack = ''
+      }
+    reverseEqn(s) {
+        // code here
+        let str = s.match(/\d+|[-+*/%]/g);
+    return this.reverse(str)
+       
+    }
+
+    reverse(str){
+      if(str.length == 0) return
+        let last  = str[0]
+        str.shift()
+        
+        this.reverse(str)
+
+         this.stack += last
+
+         return this.stack
+    }
+}
+
+  const str = new reveStr()
+  console.log(str.reverseEqn("20-3+5*2"));
 
