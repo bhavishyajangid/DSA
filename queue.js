@@ -63,14 +63,14 @@ class Queue {
 }
 
 const de = new Queue();
-console.log(de.enqueue(2));
-de.enqueue(5);
-de.enqueue(6);
-de.enqueue(7);
-de.dequeue();
-console.log(de.front());
-console.log(de.rare());
-de.printQueue();
+// console.log(de.enqueue(2));
+// de.enqueue(5);
+// de.enqueue(6);
+// de.enqueue(7);
+// de.dequeue();
+// console.log(de.front());
+// console.log(de.rare());
+// de.printQueue();
 
 // 2. *********************** CIRCULAR QUEUE ******************
 
@@ -105,7 +105,7 @@ myStack.prototype.top = function () {
   return this.q1[0];
 };
 myStack.prototype.empty = function () {
-  return this.q1.length == 0;
+  // return this.q1.length == 0;
 };
 
 // ************ implementing queue using stack ************
@@ -125,7 +125,7 @@ myStack.prototype.dequeue = function () {
     }
   }
 
-  return this.s2.pop();
+  // return this.s2.pop();
 };
 myStack.prototype.front = function () {
   if (this.s2.length === 0) {
@@ -134,10 +134,10 @@ myStack.prototype.front = function () {
     }
   }
 
-  return this.s2[this.s2.length - 1];
+  // return this.s2[this.s2.length - 1];
 };
 myStack.prototype.empty = function () {
-  return this.s1.length === 0 && this.s2.length === 0;
+  // return this.s1.length === 0 && this.s2.length === 0;
 };
 
 3; //Given an input stream s consisting only of lowercase alphabets. While reading characters from the stream, you have to tell which character has appeared only once in the stream upto that point. If there are many characters that have appeared only once, you have to tell which one of them was the first one to appear. If there is no such character then append '#' to the answer.
@@ -181,11 +181,11 @@ class Solution {
   }
 }
 
-3. //Given an array arr[]  and a positive integer k, find the first negative integer for each and every window(contiguous subarray) of size k.
+3; //Given an array arr[]  and a positive integer k, find the first negative integer for each and every window(contiguous subarray) of size k.
 
 // Note: If a window does not contain a negative integer, then return 0 for that window.
 
-          // unoptimised way 
+// unoptimised way
 
 // class Solut {
 //   constructor() {
@@ -226,12 +226,10 @@ class Solution {
 // const sol = new Solut();
 // console.log(sol.firstNegInt([12, 1, 3, 5], 3));
 
+////           UNOPTIMISED WAY
 
-////           UPTIMISED WAY 
-
-class Solution {
-  
- constructor() {
+class sol {
+  constructor() {
     this.result = [];
   }
 
@@ -261,6 +259,79 @@ class Solution {
 
     return this.result;
   }
-  
 }
+
+4; // Given an array arr[] containing only non-negative integers, your task is to find a continuous subarray (a contiguous sequence of elements) whose sum equals a specified value target. You need to return the 1-based indices of the leftmost and rightmost elements of this subarray. You need to find the first subarray whose sum is equal to the target.
+
+// Note: If no such array is possible then, return [-1]
+
+class queue {
+  subarraySum(arr, target) {
+    // code here
+
+    let queue = [];
+    let result = [];
+    let sum = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+      if (sum < target) {
+        queue.push(i);
+        sum += arr[i];
+      }
+
+      if (sum == target) {
+        result = [queue[0] + 1, queue[queue.length - 1] + 1];
+      }
+
+      if (sum > target) {
+        while (sum > target) {
+          sum -= arr[queue.shift()];
+          if (sum == target) {
+            result = [queue[0] + 1, queue[queue.length - 1] + 1];
+          }
+        }
+      }
+    }
+
+    if (result.length > 0) {
+      return result;
+    } else {
+      return [-1];
+    }
+  }
+
+
+    minJumps(arr) {
+        // code here
+        let num = 0
+        let jump = 0
+        
+        if(arr[0] == 0){
+            return -1
+        }
+        
+        for(let i = 0 ; i < arr.length ; i++){
+            if(num + i >= arr.length - 1){  
+             break
+            }else{
+                num = num > 0 ? arr[(i + num) - 1]
+               : arr[i + num]
+                 jump += 1
+            }
+
+            console.log(arr[num] , num , i);
+            
+        }
+
+        if(jump > 0){
+           return jump
+        }
+    }
+ }
+
+
+const que = new queue();
+// console.log(que.subarraySum([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 15));
+console.log(que.minJumps([9 ,10, 1, 2, 3, 4, 8, 0, 0, 0, 0, 0, 0, 0, 1]));
+
 
