@@ -249,12 +249,85 @@ class Solution {
             }
             
         }
-console.log(str5 , "skjdhf");
 
         return str5
        
     }
+
+
+
+    5.// Given a string s, your task is to find the longest palindromic substring within s.
+
+// A substring is a contiguous sequence of characters within a string, defined as s[i...j] where 0 ≤ i ≤ j < len(s).
+
+// A palindrome is a string that reads the same forward and backward. More formally, s is a palindrome if reverse(s) == s.
+
+// Note: If there are multiple palindromic substrings with the same length, return the first occurrence of the longest palindromic substring from left to right.
+    longestPalindrome(s) {
+        // code here
+       class Solution {
+    longestPalindrome(s) {
+        if (!s || s.length === 0) return "";
+
+        let start = 0, maxLen = 0;
+
+        for (let i = 0; i < s.length; i++) {
+            // Odd length palindromes
+            this.expandAroundCenter(s, i, i, (left, right) => {
+                if (right - left + 1 > maxLen) {
+                    start = left;
+                    maxLen = right - left + 1;
+                }
+            });
+
+            // Even length palindromes
+            this.expandAroundCenter(s, i, i + 1, (left, right) => {
+                if (right - left + 1 > maxLen) {
+                    start = left;
+                    maxLen = right - left + 1;
+                }
+            });
+        }
+
+        return s.substring(start, start + maxLen);
+    }
+
+    expandAroundCenter(s, left, right, callback) {
+        while (left >= 0 && right < s.length && s[left] === s[right]) {
+            left--;
+            right++;
+        }
+        // Send the valid palindrome boundaries back
+        callback(left + 1, right - 1);
+    }
+}
+    }
+
+
+    6// Given an array of strings arr[]. Return the longest common prefix among each and every strings present in the array. If there's no prefix common in all the strings, return "".
+
+    longestCommonPrefix(arr) {
+        // code here
+        let same = ""
+        let first = arr[0]
+        for(let i = 0 ; i < first.length  ; i++){
+            
+                  let sametosame = 0
+                  
+            for(let j = 1 ; j < arr.length ; j++){ 
+                if(first[i] == arr[j].charAt(i)){
+                    sametosame += 1
+                }
+            }
+            
+            if(sametosame == 3) same += first[i]
+        }
+        
+        return same
+    }
 }
 
 const s = new Solution()
-console.log(s.reverseWords(""));
+// console.log(s.reverseWords("")); 
+// console.log(s.longestPalindrome("forgeeksskeegfor"));
+console.log(s.longestCommonPrefix(["geeksforgeeks", "geeks", "geek", "geezer"]));
