@@ -317,17 +317,107 @@ class Solution {
             for(let j = 1 ; j < arr.length ; j++){ 
                 if(first[i] == arr[j].charAt(i)){
                     sametosame += 1
+                }else{
+                    return same
                 }
             }
             
-            if(sametosame == 3) same += first[i]
+            if(sametosame == arr.length - 1) same += first[i]
         }
         
         return same
+    }
+
+    7.//Given a string s consisting of lowercase English Letters. Return the first non-repeating character in s.
+// If there is no non-repeating character, return '$'.
+// Note: When you return '$' driver code will output -1.
+
+    nonRepeatingChar(s) {
+        // code here
+        let freq = {}
+        
+        for(let i = 0 ; i < s.length ; i++){
+            if(freq[s[i]]){
+                freq[s[i]] += 1
+            }else{
+                freq[s[i]] = 1
+            }
+        }
+        
+        let result = "$"
+        for (const keys in freq) {
+           if(freq[keys] == 1){
+              result = keys
+              break
+           }
+           
+        }
+        console.log(11 < parseInt("010"))
+        return result
+        
+    }
+
+
+    8. //You are given a string s in the form of an IPv4 Address. Your task is to validate an IPv4 Address, if it is valid return true otherwise return false.
+
+// IPv4 addresses are canonically represented in dot-decimal notation, which consists of four decimal numbers, each ranging from 0 to 255, separated by dots, e.g., "172.16.254.1"
+
+// A valid IPv4 Address is of the form x1.x2.x3.x4 where 0 <= (x1, x2, x3, x4) <= 255. Thus, we can write the generalized form of an IPv4 address as (0-255).(0-255).(0-255).(0-255)
+
+// Note: Here we are considering numbers only from 0 to 255 and any additional leading zeroes will be considered invalid.
+
+    isValid(s) {
+        // code here
+        s = s.split(".")
+        let correct = 0
+        console.log(s);
+        
+        if(s.length !== 4) return false
+        if(s.includes('')) return false
+
+        for(let i = 0 ; i < s.length ; i++){
+            if(s[i] > 255 || s[i] < 0){
+               return false
+            }
+            
+            if(s[i].includes("0")  && s[i].length > 1){
+                let char = s[i].charAt(0)
+                    if(char == "0"){
+                        return false
+                    }
+            }
+           
+            correct += 1
+            
+        }
+        
+        if(correct == s.length){
+            return true
+        }
+    }
+
+
+    10. //
+
+    isPalindrome(s) {
+        // code here
+        let str = s
+        let str2 = str.split('').reverse().join("") 
+        if(str == str2){
+            return true
+        }else{
+            return false
+        }
+        
+        
+        
     }
 }
 
 const s = new Solution()
 // console.log(s.reverseWords("")); 
 // console.log(s.longestPalindrome("forgeeksskeegfor"));
-console.log(s.longestCommonPrefix(["geeksforgeeks", "geeks", "geek", "geezer"]));
+// console.log(s.longestCommonPrefix(["geeksforgeeks", "geeks", "geek", "geezer"]));
+// console.log(s.nonRepeatingChar("aabbccc"));
+// console.log(s.isValid("255..255.255"));
+console.log(s.isPalindrome("abc"));
