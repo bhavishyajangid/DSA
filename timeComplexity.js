@@ -113,4 +113,125 @@
 
     // EXPLAINING : -  
                        // IN THIS CODE WE PRINT THE LOOP NUMBER FOR GIVEN NUMBER OR WHEN WE PROVIDE THE N IS 2 THE OPERATION VLAUE IS 4 OR WHEN WE PROVIDE N IS 3 THE OPERATION VALUE IS 9 SO THE OPERATION VLAUE CHANGE ACCORDING TO SQUARE 2 SQUARE IS 4 AND 3 SQUARE IS 9 SO THIS CODE HAS TIME COMPLEXITY O(N ^ 2) MEAN SQUARE OF N 
+
+ // 
     
+//  When is Time Complexity O(log n)?
+
+// 🔁 Logarithmic time happens when the problem size is reduced in half (or by a factor) each time.
+
+//     Scenario	Example(s)
+// Binary Search	O(log n) — halve the search space
+// Removing from Heap	O(log n) — down-heapify
+// Inserting into Balanced BST	O(log n) — AVL Tree / Red-Black Tree
+// Number of times loop divides n	while(n > 1) { n = n/2; }
+  
+
+//       EX : - 
+               function binarySearch(arr, target) {         // OUTPUT : O(log n)
+                      let start = 0, end = arr.length - 1;
+                          while (start <= end) {
+                          let mid = Math.floor((start + end) / 2);
+                           if (arr[mid] === target) return mid;
+                          else if (arr[mid] < target) start = mid + 1;
+                           else end = mid - 1;
+                          }
+                             return -1;
+              }
+
+       // EXPLANATION :  IN THIS EXAMPLE WE DERATICALLY CHANGE THE VALUE OF ITERAION BECAUSE WE CHECK THE MID ELEMENT OF THE ARRAY IF ITS FIT TO CONDITION WE MAKE IT HALF AND AGAIN WE CALCULATE MID OF REMAIN ELEMENT THEN AGAIN IF FIT THEN HALF IT SO WHEN WE DO LIKE THIS ALWAYS HAVE LOG N TIME COMPLEXITY WHICH IS VERY GOOD 
+
+
+
+//        When is Time Complexity O(n log n)?
+// 🔁 Happens when you do a log n operation n times (e.g., sorting + divide and conquer)
+// 📌 Common Scenarios:
+// Scenario	Example(s)
+// Merge Sort, Heap Sort, QuickSort(avg)	O(n log n) — divide and merge
+// Building a Heap from Array	O(n log n) — each insert takes log n
+// Sorting using PriorityQueue	O(n log n)
+// Balanced BST Traversal	Each insert/search is log n, done n times
+
+
+//     Ex : -  
+                      function mergeSort(arr) {
+                        if (arr.length <= 1) return arr;
+                        let mid = Math.floor(arr.length / 2);
+                        let left = mergeSort(arr.slice(0, mid));   // O(LOG N)
+                         let right = mergeSort(arr.slice(mid));
+                         return merge(left, right);
+                       }
+
+                             function merge(left, right) {
+                                 let result = [], i = 0, j = 0;   // O(N)
+                                    while (i < left.length && j < right.length) {                                           
+                                 if (left[i] < right[j]) result.push(left[i++]);
+                                   else result.push(right[j++]);
+                                  }
+                                  return [...result, ...left.slice(i), ...right.slice(j)];
+                            }
+
+                            //  TIME COMPLEXITY : - O(LOG N) + O(N) = O(N LOG N)
+
+              // EXPLANATION : =  WHEN WE USE LOG N COMPLEXITY N TIME THE N LOG N TIME COMPLEXITY IS HAPPEN IN THIS CODE WE FIRST FIND THE ARR LEFT RIGHT THEN WE LOOP ACCORDING TO IT MEAN N TIME SO FIRST FUNCATION HAS LOG N TIME COMPLEXITY THEN THE SECOND HAS O(N) SO WHEN WE ADD IT O(N LOG N) TIME COMPLEXITY IS OCCUR
+
+
+//               2. O(2n) — Linear Time
+
+// O(2n) is just another way of saying O(n)
+
+// 📌 Why?
+// Because constants are ignored in Big-O notation.
+
+// 2n means: Twice the work as n — but it's still linear growth.
+
+// So:
+// O(2n) = O(n)
+// O(1000n) = O(n)
+
+// 🧠 Example:
+// js
+// Copy
+// Edit
+// function printTwice(arr) {
+//   for (let i = 0; i < arr.length; i++) {
+//     console.log(arr[i]);
+//   }
+//   for (let i = 0; i < arr.length; i++) {
+//     console.log(arr[i]);
+//   }
+// }
+// Time Complexity: O(2n) = O(n)
+
+
+
+// 3.        O(2^n) — Exponential Time
+
+// 📌 Meaning:
+// The time (or number of operations) doubles with every additional input size.
+
+// For n = 1 → 2¹ = 2
+
+// For n = 2 → 2² = 4
+
+// For n = 3 → 2³ = 8
+
+// For n = 10 → 2¹⁰ = 1024 operations! ⚠️
+
+// ⚠️ Very slow for large inputs.
+// 🧠 Example Problems:
+// Recursion with multiple calls (no caching)
+
+// Subset generation / power set
+
+// Recursive Fibonacci (without memoization)
+
+// 📌 Example Code (Fibonacci):
+// js
+// Copy
+// Edit
+// function fib(n) {
+//   if (n <= 1) return n;
+//   return fib(n - 1) + fib(n - 2);  // 2 calls → exponential growth
+// }
+// Time Complexity: O(2^n)
