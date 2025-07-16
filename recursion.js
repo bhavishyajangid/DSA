@@ -234,7 +234,7 @@ class print {
   }
 }
 
-8. // find the given string is valid paranthesis 
+8; // find the given string is valid paranthesis
 
 let d = new print();
 // console.log( d.immediateSmaller([4, 1]));
@@ -273,8 +273,7 @@ class para {
 let g = new para();
 // console.log(g.isBalanced("([])"));
 
-
-9.//  reverse the  array element like this reverse first element to right to left then second element to left to right and third elemnt to right to left in these option a condition in the first iteration take 1 element then 2 then 4 then 8 like this
+9; //  reverse the  array element like this reverse first element to right to left then second element to left to right and third elemnt to right to left in these option a condition in the first iteration take 1 element then 2 then 4 then 8 like this
 class tree {
   constructor() {
     this.stack = [];
@@ -319,12 +318,11 @@ class tree {
 const f = new tree();
 // console.log(f.findSpiral([1, 2, "N", 4]));
 
+10; //A total of n people are standing in a circle, and you are one of them playing a game. Starting from a person, k persons will be counted in order along the circle, and the kth person will be killed. Then the next k persons will be counted along the circle, and again the kth person will be killed. This cycle will continue until only a single person is left in the circle.
 
-10. //A total of n people are standing in a circle, and you are one of them playing a game. Starting from a person, k persons will be counted in order along the circle, and the kth person will be killed. Then the next k persons will be counted along the circle, and again the kth person will be killed. This cycle will continue until only a single person is left in the circle.
+// If there are 5 people in the circle in the order A, B, C, D, and E, you will choose k=3. Starting from A, you will count A, B and C. C will be the 3rd person and will be killed. Then you will continue counting from D, E and then A. A will be third person and will be killed.
 
-// If there are 5 people in the circle in the order A, B, C, D, and E, you will choose k=3. Starting from A, you will count A, B and C. C will be the 3rd person and will be killed. Then you will continue counting from D, E and then A. A will be third person and will be killed. 
-
-// You will be given an array where the first element is the first person from whom the counting will start and the subsequent order of the people. You want to be the last one standing. Determine the index at which you should stand to survive the game. Return an integer denoting safe position. 
+// You will be given an array where the first element is the first person from whom the counting will start and the subsequent order of the people. You want to be the last one standing. Determine the index at which you should stand to survive the game. Return an integer denoting safe position.
 class Remove {
   josephus(n, k) {
     const res = [];
@@ -357,232 +355,196 @@ class Remove {
 const r = new Remove();
 // console.log(r.josephus(5, 2)); // Should return 3
 
-
-11. // reverse  a string using stack  
+11; // reverse  a string using stack
 class reve {
- reverse(s) {
-        // code here
-      let stack = []
-      let reverse = ''
-      for (let i = 0; i < s.length; i++) {
-         stack.push(s[i]);
-        
-      }
-
-      while(stack.length > 0){
-         reverse += stack.pop()
-      }
-
-      return reverse
-        
+  reverse(s) {
+    // code here
+    let stack = [];
+    let reverse = "";
+    for (let i = 0; i < s.length; i++) {
+      stack.push(s[i]);
     }
+
+    while (stack.length > 0) {
+      reverse += stack.pop();
+    }
+
+    return reverse;
+  }
 }
 
 const re = new reve();
 // console.log(re.reverse("GeeksforGeeks"));
 
-11.//  Given an array of negative and non-negative integers. You have to make the array beautiful. An array is beautiful if two adjacent integers, arr[i] and arr[i+1] are either negative or non-negative. And you can do the following operation any number of times until the array becomes beautiful.
+11; //  Given an array of negative and non-negative integers. You have to make the array beautiful. An array is beautiful if two adjacent integers, arr[i] and arr[i+1] are either negative or non-negative. And you can do the following operation any number of times until the array becomes beautiful.
 
 // If two adjacent integers are different i.e. one of them is negative and other is non-negative, remove them.
 // Return the beautiful array after performing the above operation.
 
 // Note:An empty array is also a beautiful array. There can be many adjacent integers which are different as stated above. So remove different adjacent integers as described above from left to right.
 
-
 class negative {
-    // Function to make the given array beautiful.
-    constructor(){
-      this.stack = []
-    }
-    makeBeautiful(arr) {
-        
-       for (let i = 0; i < arr.length; i++) { 
-            
-       }
+  // Function to make the given array beautiful.
+  constructor() {
+    this.stack = [];
+  }
+  makeBeautiful(arr) {
+    for (let i = 0; i < arr.length; i++) {}
 
-       
-            return stack
-    }
+    return stack;
+  }
 }
 
 // const n = new negative()
 // console.log(n.makeBeautiful([1,10]));
 
-
-12.// make a fabonacci number which mean is 1+1+2+3+4+5 = mean 1+1=2+1=3+2=5+3=8 like this for n number
+12; // make a fabonacci number which mean is 1+1+2+3+4+5 = mean 1+1=2+1=3+2=5+3=8 like this for n number
 class fabi {
-    constructor(){
-      this.f1 = 0
-      this.f2 = 1
-      this.temp 
-    }
-    fibonacci(n) {
-        // Code here
-       
-        if(n == 0){
-          return 0
-        }else{
-           for (let i = n; i > 1; i--) {
-            
-            this.temp = this.f2
-            this.f2 += this.f1
-            this.f1 = this.temp
-            
-           }
+  constructor() {
+    this.f1 = 0;
+    this.f2 = 1;
+    this.temp;
+  }
+  fibonacci(n) {
+    // Code here
 
-           return this.f2
-        }
-       
+    if (n == 0) {
+      return 0;
+    } else {
+      for (let i = n; i > 1; i--) {
+        this.temp = this.f2;
+        this.f2 += this.f1;
+        this.f1 = this.temp;
+      }
+
+      return this.f2;
     }
-    
-   
-    
-    
-    
+  }
 }
-const n = new fabi()
+const n = new fabi();
 // console.log(n.fibonacci(4));
 
-
-
-13. // count how many element present in interger ex 253 output = 3
+13; // count how many element present in interger ex 253 output = 3
 class num {
-    countDigits(n) {
-        // code here
-    let str =  n.toString()
-      
-      
-      
-        let number = 0
-          for (let i = 0; i < str.length; i++) {            
-           number += 1
-          }
-        
-        return number
-       
+  countDigits(n) {
+    // code here
+    let str = n.toString();
+
+    let number = 0;
+    for (let i = 0; i < str.length; i++) {
+      number += 1;
     }
+
+    return number;
+  }
 }
-const nu = new num()
+const nu = new num();
 // console.log(nu.countDigits(425));
 
-
-13.// add all the digit of the interger ex = 99999 output = 45
+13; // add all the digit of the interger ex = 99999 output = 45
 
 class sum {
-    // sumOfDigits(n) {
-    //     // code here
-         
-    //      let str = n.toString()
-    //      let number = 0
-    //      console.log(str);
-         
-    //      for(let i = 0 ; i < str.length ; i++){    
-    //          number += Number(str[i])
-    //      }
-         
-    //      return number
-    // }
-    
-    constructor(){
-          this.stack = []
-      }
-      insertAtBottom(st, x) {
-      console.log(st.length);
-      
-      return this.add(st , x )
-    
-      
-      }
+  // sumOfDigits(n) {
+  //     // code here
 
-      add(st , x , index){
-        
-        if(st.length == 0){
-           this.stack.push(x)
-           return
-        }
-        
-        let last = st[st.length - 1]
-        st.pop()
+  //      let str = n.toString()
+  //      let number = 0
+  //      console.log(str);
 
+  //      for(let i = 0 ; i < str.length ; i++){
+  //          number += Number(str[i])
+  //      }
 
-        this.add(st , x , index + 1)
-        
-        this.stack.push(last)
-        
-          return this.stack
-      }
+  //      return number
+  // }
+
+  constructor() {
+    this.stack = [];
+  }
+  insertAtBottom(st, x) {
+    console.log(st.length);
+
+    return this.add(st, x);
   }
 
-  const su = new sum()
-  // console.log(su.insertAtBottom([5,3,1], 4));
+  add(st, x, index) {
+    if (st.length == 0) {
+      this.stack.push(x);
+      return;
+    }
 
+    let last = st[st.length - 1];
+    st.pop();
 
+    this.add(st, x, index + 1);
 
+    this.stack.push(last);
 
-  14. // insert the number at the bottom of the stack or print it
-
-
-  class sm {
-  
-    
-    constructor(){
-          this.stack = []
-      }
-      insertAtBottom(st, x) {
-      console.log(st.length);
-      
-      return this.add(st , x )
-    
-      
-      }
-
-      add(st , x , index){
-        
-        if(st.length == 0){
-           this.stack.push(x)
-           return
-        }
-        
-        let last = st[st.length - 1]
-        st.pop()
-
-
-        this.add(st , x , index + 1)
-        
-        this.stack.push(last)
-        
-          return this.stack
-      }
+    return this.stack;
   }
-
-  const sf = new sm()
-  // console.log(sf.insertAtBottom([5,3,1], 4));
-  
-
-  class reveStr {
-    constructor(){
-          this.stack = ''
-      }
-    reverseEqn(s) {
-        // code here
-        let str = s.match(/\d+|[-+*/%]/g);
-    return this.reverse(str)
-       
-    }
-
-    reverse(str){
-      if(str.length == 0) return
-        let last  = str[0]
-        str.shift()
-        
-        this.reverse(str)
-
-         this.stack += last
-
-         return this.stack
-    }
 }
 
-  const str = new reveStr()
-  console.log(str.reverseEqn("20-3+5*2"));
+const su = new sum();
+// console.log(su.insertAtBottom([5,3,1], 4));
+
+14; // insert the number at the bottom of the stack or print it
+
+class sm {
+  constructor() {
+    this.stack = [];
+  }
+  insertAtBottom(st, x) {
+    console.log(st.length);
+
+    return this.add(st, x);
+  }
+
+  add(st, x, index) {
+    if (st.length == 0) {
+      this.stack.push(x);
+      return;
+    }
+
+    let last = st[st.length - 1];
+    st.pop();
+
+    this.add(st, x, index + 1);
+
+    this.stack.push(last);
+
+    return this.stack;
+  }
+}
+
+const sf = new sm();
+// console.log(sf.insertAtBottom([5,3,1], 4));
+
+class reveStr {
+  constructor() {
+    this.stack = "";
+  }
+  reverseEqn(s) {
+    // code here
+    let str = s.match(/\d+|[-+*/%]/g);
+    return this.reverse(str);
+  }
+
+  reverse(str) {
+    if (str.length == 0) return;
+    let last = str[0];
+    str.shift();
+
+    this.reverse(str);
+
+    this.stack += last;
+
+    return this.stack;
+  }
+}
+
+const str = new reveStr();
+// console.log(str.reverseEqn("20-3+5*2"));
+
+
+
 

@@ -337,4 +337,61 @@ function findLowerBound(arr, target){
   }
 }
 
-console.log(findLowerBound([2, 3, 7, 10, 11, 11, 25] , 100));
+// console.log(findLowerBound([2, 3, 7, 10, 11, 11, 25] , 100));
+
+
+
+9. // Given a sorted array of distinct positive integers arr[], we need to find the kth positive number that is missing from arr[].  
+
+// Examples :
+
+// Input: arr[] = [2, 3, 4, 7, 11], k = 5
+// Output: 9
+// Explanation: Missing are 1, 5, 6, 8, 9, 10… and 5th missing number is 9.
+
+function kthMissing(arr, k) {
+  // code here
+
+   let start = 1
+        let i = 0
+        let count  = 0
+        
+        while(true){
+          //counting start with 1 so we check if the first element is 1 or not if then we count it and incase our start when its match we new it this is element present so we skip it other non present number we count it 
+            if(i < arr.length  && arr[i] === start){
+                i++
+            }else{
+                count++
+                if(count == k) return start
+            }
+            
+            start++
+        }
+}
+
+// console.log(kthMissing([2, 3, 4, 7, 11], 5));
+
+
+function kthSorted(arr , k){
+     let arr1 = [...arr]
+     let arr2 = arr.sort((a, b) => a-b)
+     
+     let start = 0
+     let end = arr1.length - 1
+     while(start < end){
+         let mid = Math.floor((start + end) / 2)
+         console.log(arr2[mid] ,arr1[mid ] , arr1[mid + k] , arr1[Math.abs(mid - k)] , mid);
+
+         if(arr2[mid] !== arr1[mid] && arr1[mid + k] !== arr2[mid] && arr1[Math.abs(mid - k) !== arr2[mid]] ){
+          
+            return 'No'
+         }else if(arr2[mid] < k){
+          start = mid + 1
+         }else{
+          end = mid - 1
+         }
+     }
+     return 'Yes'
+}
+
+console.log(kthSorted([13, 8, 10, 7, 15, 14, 12] , 1));
