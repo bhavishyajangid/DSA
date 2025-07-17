@@ -224,9 +224,7 @@ function minElement(arr) {
 
 // console.log(minElement([3, 4, 5, 1, 2]));
 
-
-
-7. // You are given the arrival times arr[] and departure times dep[] of all trains that arrive at a railway station on the same day. Your task is to determine the minimum number of platforms required at the station to ensure that no train is kept waiting.
+7; // You are given the arrival times arr[] and departure times dep[] of all trains that arrive at a railway station on the same day. Your task is to determine the minimum number of platforms required at the station to ensure that no train is kept waiting.
 
 // At any given time, the same platform cannot be used for both the arrival of one train and the departure of another. Therefore, when two trains arrive at the same time, or when one arrives before another departs, additional platforms are required to accommodate both trains.
 
@@ -236,14 +234,13 @@ function minElement(arr) {
 // Output: 3
 // Explanation: There are three trains during the time 9:40 to 12:00. So we need a minimum of 3 platforms.
 
-function trainTime(arr , dep){
-  // THIS IS CORRECT BUT NOT ACCURATE BECAUSE THIS IS NOT TRANK THE TRAIN IS CURRENTLY STAND ON THE PLATEFORM OR NOT SO 
+function trainTime(arr, dep) {
+  // THIS IS CORRECT BUT NOT ACCURATE BECAUSE THIS IS NOT TRANK THE TRAIN IS CURRENTLY STAND ON THE PLATEFORM OR NOT SO
   // arr.sort((a , b) => a-b)
   // dep.sort((a,b) => a-b)
   //   let plateform = 0
   //   let trainStandTime = 0
-    
-  
+
   //   for (let i = 0; i < arr.length - 1; i++) {
   //     let arrival = arr[i + 1]
   //     let depa = dep[i + 1]
@@ -264,13 +261,12 @@ function trainTime(arr , dep){
   //    }
 
   //    console.log(plateform , arr[i] , dep[i] , arrival , depa , trainStandTime);
-     
+
   //   }
- 
+
   //   return plateform
 
-
-  //CORRECT WAY THIS ALSO STORE THE TRAIN STAND ON THE PALEFORM RIGHT NOW 
+  //CORRECT WAY THIS ALSO STORE THE TRAIN STAND ON THE PALEFORM RIGHT NOW
   arr.sort((a, b) => a - b);
   dep.sort((a, b) => a - b);
 
@@ -278,7 +274,8 @@ function trainTime(arr , dep){
   let platform_needed = 1;
   let max_platforms = 1;
 
-  let i = 1, j = 0;
+  let i = 1,
+    j = 0;
 
   while (i < n && j < n) {
     // If next train arrives before the earliest departure → need new platform
@@ -299,10 +296,9 @@ function trainTime(arr , dep){
 
 // console.log(trainTime([900, 940, 950, 1100, 1500, 1800] , [910, 1200, 1120, 1130, 1900, 2000]));
 
+8; // Given a sorted array arr[] and a number target, the task is to find the lower bound of the target in this given array. The lower bound of a number is defined as the smallest index in the sorted array where the element is greater than or equal to the given number.
 
- 8. // Given a sorted array arr[] and a number target, the task is to find the lower bound of the target in this given array. The lower bound of a number is defined as the smallest index in the sorted array where the element is greater than or equal to the given number.
-
-// Note: If all the elements in the given array are smaller than the target, the lower bound will be the length of the array. 
+// Note: If all the elements in the given array are smaller than the target, the lower bound will be the length of the array.
 
 // Examples :
 
@@ -310,38 +306,34 @@ function trainTime(arr , dep){
 // Output: 3
 // Explanation: 3 is the smallest index in arr[] where element (arr[3] = 10) is greater than or equal to 9.
 
-function findLowerBound(arr, target){
-  let start = 0
-  let end = arr.length - 1
-  let index = 0
-  while(start <= end){
-     let mid = Math.floor((start + end) / 2)
-    if(arr[mid] >= target){
-     if(arr[mid - 1] >= target ){
-         end = mid - 1
-         index = mid
-      }else{
-       
-        
-        return mid
+function findLowerBound(arr, target) {
+  let start = 0;
+  let end = arr.length - 1;
+  let index = 0;
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+    if (arr[mid] >= target) {
+      if (arr[mid - 1] >= target) {
+        end = mid - 1;
+        index = mid;
+      } else {
+        return mid;
       }
-    }else if(arr[mid] < target){
-       start = mid + 1
+    } else if (arr[mid] < target) {
+      start = mid + 1;
     }
   }
 
-  if(index > 0){
-    return index
-  }else{
-     return arr.length
+  if (index > 0) {
+    return index;
+  } else {
+    return arr.length;
   }
 }
 
 // console.log(findLowerBound([2, 3, 7, 10, 11, 11, 25] , 100));
 
-
-
-9. // Given a sorted array of distinct positive integers arr[], we need to find the kth positive number that is missing from arr[].  
+9; // Given a sorted array of distinct positive integers arr[], we need to find the kth positive number that is missing from arr[].
 
 // Examples :
 
@@ -352,46 +344,147 @@ function findLowerBound(arr, target){
 function kthMissing(arr, k) {
   // code here
 
-   let start = 1
-        let i = 0
-        let count  = 0
-        
-        while(true){
-          //counting start with 1 so we check if the first element is 1 or not if then we count it and incase our start when its match we new it this is element present so we skip it other non present number we count it 
-            if(i < arr.length  && arr[i] === start){
-                i++
-            }else{
-                count++
-                if(count == k) return start
-            }
-            
-            start++
-        }
+  let start = 1;
+  let i = 0;
+  let count = 0;
+
+  while (true) {
+    //counting start with 1 so we check if the first element is 1 or not if then we count it and incase our start when its match we new it this is element present so we skip it other non present number we count it
+    if (i < arr.length && arr[i] === start) {
+      i++;
+    } else {
+      count++;
+      if (count == k) return start;
+    }
+
+    start++;
+  }
 }
 
 // console.log(kthMissing([2, 3, 4, 7, 11], 5));
 
 
-function kthSorted(arr , k){
-     let arr1 = [...arr]
-     let arr2 = arr.sort((a, b) => a-b)
-     
-     let start = 0
-     let end = arr1.length - 1
-     while(start < end){
-         let mid = Math.floor((start + end) / 2)
-         console.log(arr2[mid] ,arr1[mid ] , arr1[mid + k] , arr1[Math.abs(mid - k)] , mid);
+10 // Given an array of n distinct elements. Check whether the given array is a k-sorted array or not. A k-sorted array is an array where each element is at most k distance away from its target position in the sorted array. 
+// Return "Yes" if the array is a k-sorted array else return "No".
 
-         if(arr2[mid] !== arr1[mid] && arr1[mid + k] !== arr2[mid] && arr1[Math.abs(mid - k) !== arr2[mid]] ){
-          
-            return 'No'
-         }else if(arr2[mid] < k){
-          start = mid + 1
-         }else{
-          end = mid - 1
-         }
-     }
-     return 'Yes'
+// Examples
+
+// Input: n=6, arr[] = {3, 2, 1, 5, 6, 4}, k = 2
+// Output: Yes
+// Explanation: Every element is at most 2 distance away from its target position in thesorted array.
+
+function findIndex(arr, target) {
+  let start = 0;
+  let end = arr.length - 1;
+
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+
+    if (arr[mid] == target) {
+      return mid;
+    } else if (arr[mid] < target) {
+      start = mid + 1;
+    } else {
+      end = mid - 1;
+    }
+  }
+  return -1;
 }
 
-console.log(kthSorted([13, 8, 10, 7, 15, 14, 12] , 1));
+function kthSorted(arr, k) {
+  let arr1 = [...arr];
+  let arr2 = arr.sort((a, b) => a - b);
+
+  for (let i = 0; i < arr1.length; i++) {
+    let correctIndex = findIndex(arr2, arr1[i]);
+
+    if (Math.abs(correctIndex - i) > k) {
+      return "No";
+    }
+  }
+  return "Yes";
+}
+
+// console.log(kthSorted([3, 2, 1, 5, 6, 4], 2));
+
+11 //. You are given two unsorted arrays a[] and b[]. Both arrays may contain duplicate elements. For each element in a[], your task is to count how many elements in b[] are less than or equal to that element.
+
+// Examples:
+
+// Input: a[] = [4, 8, 7, 5, 1], b[] = [4, 48, 3, 0, 1, 1, 5]
+// Output: [5, 6, 6, 6, 3]
+// Explanation: 
+// For a[0] = 4, there are 5 elements in b (4, 3, 0, 1, 1) that are ≤ 4.
+// For a[1] = 8 and a[2] = 7, there are 6 elements in b that are ≤ 8 and ≤ 7.
+// For a[3] = 5, there are 6 elements in b that are ≤ 5.
+// For a[4] = 1, there are 3 elements in b (0, 1, 1) that are ≤ 1.
+
+
+
+
+function findSmallestNumber(arr , target){
+ let start = 0;
+    let end = arr.length - 1;
+    let ans = 0;
+
+    while (start <= end) {
+      let mid = Math.floor((start + end) / 2);
+
+      if (arr[mid] <= target) {
+        ans = mid + 1; // Because we're counting (0-based index)
+        start = mid + 1;
+      } else {
+        end = mid - 1;
+      }
+    }
+
+    return ans;
+}
+
+
+function countLessEq(arr, brr) {
+        // code here
+        let result = []
+       let sortArr = brr.sort((a, b) => a-b)
+ 
+       for (let i = 0; i < arr.length; i++) {
+        let number = findSmallestNumber(sortArr , arr[i])
+         result.push(number)
+       }
+ 
+       return result
+        
+    }
+
+    // console.log(countLessEq([85 ,54 ,60 ,75 ,76 ,89 ,70 ,41 ,89],   [68, 31, 72, 10, 41, 33, 43, 24, 28, 49, 24, 75, 90, 68, 17, 41, 5]));
+    
+    
+  12 // . Given two arrays a[] and b[], your task is to determine whether b[] is a subset of a[].
+
+// Examples:
+
+// Input: a[] = [11, 7, 1, 13, 21, 3, 7, 3], b[] = [11, 3, 7, 1, 7]
+// Output: true
+// Explanation: b[] is a subset of a[]
+
+ function isSubset(a, b) {
+        let freq = {};
+
+        // Build frequency map of array A
+        for (let i = 0; i < a.length; i++) {
+            freq[a[i]] = (freq[a[i]] || 0) + 1;
+        }
+
+        // Check elements of B
+        for (let i = 0; i < b.length; i++) {
+            if (!freq[b[i]]) {
+                return false; // element not found or used up
+            }
+            freq[b[i]]--;
+        }
+
+        return true;
+    }
+
+    console.log(isSubset([11, 7, 1, 13, 21, 3, 7, 3] , [11, 3, 7, 1, 7]));
+    
