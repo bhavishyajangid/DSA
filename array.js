@@ -542,5 +542,33 @@ function majorityElement(arr) {
     
   
      
+11. // Given an array arr[] and an integer k where k is smaller than the size of the array, your task is to find the kth smallest element in the given array.
 
+// Follow up: Don't solve it using the inbuilt sort function.
+
+// Examples :
+
+// Input: arr[] = [7, 10, 4, 3, 20, 15], k = 3
+// Output: 7
+// Explanation: 3rd smallest element in the given array is 7.
+
+function kthSmallest(arr, k) {
+        // code here
+         let n = arr.length
+             for (let i = 1; i < n; i++) {
+                let key = arr[i]
+                let j = i-1
+
+                while(j >=0 && arr[j] > key){
+                             arr[j+1] = arr[j]
+                             j--
+                }
+
+                arr[j+1] = key
+                
+             }
+             return arr[k-1]
+    }
+    console.log(kthSmallest([7, 10, 4, 3, 20, 15] , 3));
+    
       

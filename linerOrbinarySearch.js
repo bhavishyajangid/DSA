@@ -486,5 +486,72 @@ function countLessEq(arr, brr) {
         return true;
     }
 
-    console.log(isSubset([11, 7, 1, 13, 21, 3, 7, 3] , [11, 3, 7, 1, 7]));
+    // console.log(isSubset([11, 7, 1, 13, 21, 3, 7, 3] , [11, 3, 7, 1, 7]));
+
+
+    13.// Given a sorted array arr and an integer k, find the position(0-based indexing) at which k is present in the array using binary search.
+
+// Note: If multiple occurrences are there, please return the smallest index.
+// Input: arr[] = [1, 2, 3, 4, 5], k = 4
+// Output: 3
+// Explanation: 4 appears at index 3.
+
+ function binarysearch(arr, k) {
+        // Code Here
+        let start = 0
+        let end = arr.length - 1
+        
+        while(start <= end){
+            let mid = Math.floor((start + end) /2)
+            
+            if(arr[mid] < k){
+                start = mid+ 1
+            }else{
+                if(arr[mid] == k){
+                    if(arr[mid -1] == k){
+                        end = mid - 1
+                    }else{
+                        return mid
+                    }
+                }
+                end = mid - 1
+            }
+        }
+        return -1
+    }
+    
+    // console.log(binarysearch([1, 2, 3, 4, 5] , 4));
+    
+ 14  // Given a sorted array arr[] and an integer x, find the index (0-based) of the largest element in arr[] that is less than or equal to x. This element is called the floor of x. If such an element does not exist, return -1.
+
+// Note: In case of multiple occurrences of ceil of x, return the index of the last occurrence.
+
+// Examples
+
+// Input: arr[] = [1, 2, 8, 10, 10, 12, 19], x = 5
+// Output: 1
+// Explanation: Largest number less than or equal to 5 is 2, whose index is 1.
+
+ function findFloor(arr, x) {
+        // your code here
+        let start = 0
+        let end = arr.length - 1
+        let findIndex = -1
+        
+        while(start <= end){
+           let mid = Math.floor((start + end) /2 )
+           
+           if(arr[mid] == x){
+               findIndex = mid
+               start = mid + 1
+           }else if(arr[mid] < x){
+               findIndex = mid
+               start = mid + 1
+           }else{
+               end = mid  -1
+           }
+        }
+        return findIndex
+    }
+    console.log(findFloor([1, 2, 8, 10, 10, 12, 19] , 5));
     
