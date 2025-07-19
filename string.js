@@ -421,3 +421,46 @@ const s = new Solution()
 // console.log(s.nonRepeatingChar("aabbccc"));
 // console.log(s.isValid("255..255.255"));
 console.log(s.isPalindrome("abc"));
+
+
+11.  // Given two non-empty strings s1 and s2, consisting only of lowercase English letters, determine whether they are anagrams of each other or not. Two strings are considered anagrams if they contain the same characters with exactly the same frequencies, regardless of their order.
+
+// Examples:
+
+// Input: s1 = "geeks" s2 = "kseeg"
+// Output: true 
+// Explanation: Both the string have same characters with same frequency. So, they are anagrams. 
+
+
+function areAnagrams(s1, s2) {
+        // code here
+        let obj1 = {}
+        let obj2 = {}
+        if(s1.length !== s2.length){
+            return false
+        }
+
+        setFreq(s1 , obj1)
+        setFreq(s2 , obj2)
+        
+        for(let i = 0 ; i < s1.length ; i++){
+            if(obj1[s1[i]] !== obj2[s1[i]]){
+                  return false
+            }
+        }
+       return true
+        
+    }
+
+    function setFreq (str , obj){
+        for (let i = 0; i < str.length; i++) {
+           if(obj[str[i]]){
+             obj[str[i]] += 1
+           }else{
+              obj[str[i]] = 1
+           }
+            
+        }
+    }
+    // console.log(areAnagrams("allergy", "allergg"));
+    
