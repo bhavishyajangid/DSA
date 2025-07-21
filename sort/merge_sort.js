@@ -32,7 +32,7 @@ function merge(left , right){
     return [...sortedArray , ...left , ...right]
 }
 
-// console.log(mergeSort([-3, 1, 0, -2]));
+// console.log(mergeSort([0, 1, 2, 0, 1, 2]));
 
 
 
@@ -67,4 +67,105 @@ function removeDuplicate(arr1 , arr2){
   return arr;
 }
 
-console.log(removeDuplicate([7, 1, 5, 3, 9] , [8, 4, 3, 5, 2, 6]));
+// console.log(removeDuplicate([7, 1, 5, 3, 9] , [8, 4, 3, 5, 2, 6]));
+
+
+
+2.// You are given an array of size N. Rearrange the given array in-place such that all the negative numbers occur before all non-negative numbers.
+// (Maintain the order of all -ve and non-negative numbers as given in the original array).
+
+// Example 1:
+
+// Input:
+// N = 4
+// Arr[] = {-3, 3, -2, 2}
+// Output:
+// -3 -2 3 2
+// Explanation:
+// In the given array, negative numbers
+// are -3, -2 and non-negative numbers are 3, 2.
+
+function sortElementNotChange(arr){
+  if(arr.length <= 1) return arr
+
+  let mid = arr.length / 2
+
+  let left = sortElementNotChange(arr.slice(0 , mid))
+  let right = sortElementNotChange(arr.slice(mid))
+
+  return sortmerge(left , right)
+}
+
+function sortmerge(left , right){
+  
+  console.log(left , right , 'in');
+  let sortedArray  = []
+  while(left.length && right.length){
+    console.log(left[0] , right[0] , sortedArray);
+    
+    if(left[0] < 0){
+      sortedArray.push(left.shift())
+    }else{
+      if(left[0] > -1 && right[0] >-1){
+        sortedArray.push(left.shift())
+      }else{
+        sortedArray.push(right.shift())
+      }
+    }
+  }
+
+  return [...sortedArray ,...left , ...right]
+}
+
+// console.log(sortElementNotChange([-5 ,-2, 3, -3,5, 5, -4]));
+
+
+3.  //Count Inversions Using Merge Sort
+// Problem:
+// Count the number of inversions in the array.
+// An inversion is a pair (i, j) such that i < j and arr[i] > arr[j].
+
+// Input:
+// arr = [8, 4, 2, 1]
+
+// Output:
+// 6
+
+// Explanation:
+// Inversions are: (8,4), (8,2), (8,1), (4,2), (4,1), (2,1)
+
+function inversions(arr){
+    if(arr.length <= 1) return arr
+    let pair = 0
+
+    let mid = Math.floor(arr.length / 2)
+        console.log(mid , 'mid');
+        
+    let left = inversions(arr.slice(0, mid))
+    let right = inversions(arr.slice(mid))
+
+    return findPair(left , right , pair)
+
+  }
+
+  function findPair(left , right , pair){
+     
+     console.log('come in' ,left , right , pair);
+    
+    let sortedArray = []
+    while(left.length && right.length){
+        if(left[0] < right[0]){
+    
+            sortedArray.push(left.shift())
+        }else{
+          
+            sortedArray.push(right.shift())
+        }
+    }
+    console.log('sort' , [...sortedArray , ...left , ...right]);
+    
+    return [...sortedArray , ...left , ...right]
+  }
+
+  console.log(inversions([2, 4, 1, 3, 5]));
+  
