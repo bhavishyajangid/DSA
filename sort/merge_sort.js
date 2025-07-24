@@ -7,14 +7,14 @@ function mergeSort(arr) {
 
   let mid = Math.floor(arr.length / 2);
   // console.log(mid);
-  let left = mergeSort(arr.slice(0, mid));
+  let left = mergeSort(arr.slice(0, mid ));
   let right = mergeSort(arr.slice(mid));
   console.log(left, right);
 
-  return merge(left, right);
+  return merge(left, right );
 }
 
-function merge(left, right) {
+function merge(left, right ) {
   console.log("come in", left, right);
 
   let sortedArray = [];
@@ -22,15 +22,16 @@ function merge(left, right) {
     if (left[0] < right[0]) {
       sortedArray.push(left.shift());
     } else {
+      
       sortedArray.push(right.shift());
     }
   }
-  console.log("sort", [...sortedArray, ...left, ...right]);
+ 
 
   return [...sortedArray, ...left, ...right];
 }
 
-// console.log(mergeSort([0, 1, 2, 0, 1, 2]));
+// console.log(mergeSort([2, 4, 1, 5 , 3] ,0));
 
 // here we first divide the array into two parts and then store into the left and right how here  confusing part is when the left past store it call again the funcat,ion funcation call and again its calculate mid of the left array which is [8,3,5,4] and store into left which is [8,3] again call the funcaiton and calculate mid and now the array is [8,3] and store left of the mid is[8] now call again and here the condition if the arr.length <=1 then we go so now the length is small and return the left element [8] how the left funcation is call but the right is return because every time you calculate the left you call the mergersort and under the left is return then left is stop work but under the left right run or run every time when you calculate left like when we hit last case we have [8] for this funcation we return and go the right funcation and call so the [8] here the left element but the right is [3] and then again we call right funcaiton we have [5,4]and so on so first sort the left whole and after right whole array
 
@@ -54,10 +55,14 @@ function conquer(arr, first, mid, last) {
   let j = mid + 1;
   let k = 0;
 
+  console.log(first , arr[i] , arr[j] , arr);
+  
   while (i <= mid && j <= last) {
     if (arr[i] < arr[j]) {
       temp[k++] = arr[i++];
     } else {
+     
+      
       temp[k++] = arr[j++];
     }
   }
@@ -75,6 +80,8 @@ function conquer(arr, first, mid, last) {
     arr[first + p] = temp[p];
   }
 }
+
+
 
 let arr = [5, 9, 8, 6, 2, 8, 1, 98];
 // divide(arr, 0, arr.length - 1);
@@ -360,3 +367,100 @@ function minSwaps(arr) {
 }
 
 // console.log(minSwaps([2, 8, 5, 4]));
+
+
+3. //Given an array of integers arr[]. You have to find the Inversion Count of the array. 
+// Note : Inversion count is the number of pairs of elements (i, j) such that i < j and arr[i] > arr[j].
+
+// Examples:
+
+// Input: arr[] = [2, 4, 1, 3, 5]
+// Output: 3
+// Explanation: The sequence 2, 4, 1, 3, 5 has three inversions (2, 1), (4, 1), (4, 3).
+
+ function inversionCount(arr) {
+        let pair = { count: 0 };  // Object to track inversion count by reference
+        mergeSort(arr, pair);
+        return pair.count;
+    }
+
+   function mergeSort(arr, pair) {
+        if (arr.length <= 1) return arr;
+
+        let mid = Math.floor(arr.length / 2);
+        let left =  mergeSort(arr.slice(0, mid), pair);
+        let right = mergeSort(arr.slice(mid), pair);
+
+        return merge(left, right, pair);
+    }
+
+  function  merge(left, right, pair) {
+        let sortedArray = [];
+        let i = 0, j = 0;
+
+        while (i < left.length && j < right.length) {
+            if (left[i] <= right[j]) {
+                sortedArray.push(left[i]);
+                i++;
+            } else {
+                // Inversion: left[i] > right[j]
+                pair.count += (left.length - i);
+                sortedArray.push(right[j]);
+                j++;
+            }
+        }
+
+        // Append remaining elements
+        while (i < left.length) {
+            sortedArray.push(left[i]);
+            i++;
+        }
+
+        while (j < right.length) {
+            sortedArray.push(right[j]);
+            j++;
+        }
+
+        return sortedArray;
+    }
+// console.log(inversionCount([2, 4, 1, 3, 5])); // Output: 3
+
+// in this code we first divide the array into two parts and then sort the left and right array and then compare the left and right element if the left element is larger then the right element then we increase the pair count by the number of elements left in the left array because all those elements will be greater than the current right element. This way we can count inversions efficiently using merge sort.
+// The time complexity of this algorithm is O(n log n) due to the merge sort,
+
+
+
+
+
+function mergeTwoSortedArray(arr1 , arr2){
+   let i = 0
+   let j = 0
+   let temp = []
+
+   while(i < arr1.length && j < arr2.length){
+      if(arr1[i] <= arr2[j]){
+          temp.push(arr1[i])
+          i++
+      }else{
+        temp.push(arr2[j])
+          j++
+      }
+   }
+
+
+   
+   while (i < arr1.length) {
+            temp.push(arr1[i]);
+            i++;
+        }
+
+        while (j < arr2.length) {
+            temp.push(arr2[j]);
+            j++;
+        }
+
+        
+        return [temp.slice(0 , arr1.length) , temp.slice(arr1.length)]
+}
+
+console.log(mergeTwoSortedArray([1 ,3, 5, 7] , [0 ,2, 6, 8, 9]));

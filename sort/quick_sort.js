@@ -1,7 +1,7 @@
 // ******************************* QUICK SORT IN JS ************************
 // in the qucik sort algorithim first we take a pivot of the array the make two array left or right and loop it anc check if the element if larger then the pivot element we push it into right array if small we put into left like this every time we will get a pivot and we will do the same thing until we have only one element in the array then we will return the array
 
-function quickSort(arr) {
+function quickSort(arr ) {
   if (arr.length <= 1) {
     return arr;
   }
@@ -11,22 +11,31 @@ function quickSort(arr) {
   const left = [];
   const right = [];
 
-  for (let i = 0; i < arr.length - 1; i++) {
+  for (let i = 1; i < arr.length; i++) {
+    console.log(pivot , arr[i] , left , right , arr);
+    
     if (arr[i] < pivot) {
+      console.log(pair , arr[i] , pivot , 'middle');
+      
       left.push(arr[i]);
+      pair += 1
     } else {
       right.push(arr[i]);
     }
   }
-
-  return [...quickSort(left), pivot, ...quickSort(right)];  // here we call this fucation recursively so we do it again this provcess untile the array is sorted
+ 
+  
+  
+  
+  return [...quickSort(left), pivot, ...quickSort(right )];  // here we call this fucation recursively so we do it again this provcess untile the array is sorted
 }
 
-// console.log(quickSort([3, 6, 8, 10, 1, 2, 1])); // Output: [1, 1, 2, 3, 6, 8, 10]
+console.log(quickSort([2, 4, 1, 5 , 3])); // Output: [1, 1, 2, 3, 6, 8, 10]
 
 
 // ***************** THERE IS ANOTHER WAY TO DO THIS WITHOUT THE ARRAY ***********
 
+ 
 function sortArray(arr){
     return quickSort2(arr)
 }
@@ -49,9 +58,12 @@ function pivot(arr, start = 0 , end = arr.length ){
     let swapIndex = start
 
     for (let i = start + 1; i < arr.length; i++) {
-        if(pivot > arr[i]){
-             swapIndex++
-             [arr[swapIndex], arr[i]] = [arr[i], arr[swapIndex]]; // swap the elements
+      console.log(pivot , arr[i] , swapIndex, arr ,'current element');
+      if(pivot > arr[i]){
+        console.log('true' ,  arr[i] , pivot , swapIndex);
+        
+        swapIndex++
+        [arr[swapIndex], arr[i]] = [arr[i], arr[swapIndex]]; // swap the elements
              console.log(arr , pivot , swapIndex , arr[i]);
              
         }
@@ -63,4 +75,8 @@ function pivot(arr, start = 0 , end = arr.length ){
     return swapIndex; // return the index of the pivot
 }
 
-console.log(sortArray([3, 6, 8, 10, 1, 2, 1])); // Output: [1, 1, 2, 3, 6, 8, 10]
+// console.log(sortArray([5,4,3,10,2])); // Output: [1, 1, 2, 3, 6, 8, 10]
+
+
+
+    

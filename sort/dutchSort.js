@@ -26,7 +26,7 @@
               return arr
           }
 
-          console.log(dutchNationalFlag([0,1,2,1,0,2,2,0,1])); // Output: [0,0,0,1,1,1,2,2,2]
+         //  console.log(dutchNationalFlag([0,1,2,1,0,2,2,0,1])); // Output: [0,0,0,1,1,1,2,2,2]
           
 
           // explanation : -
@@ -47,3 +47,43 @@
 //   5. we repeat this process until mid is less than or equal to high
 
 
+2.  //Given an array and a range a, b. The task is to partition the array around the range such that the array is divided into three parts.
+// 1) All elements smaller than a come first.
+// 2) All elements in range a to b come next.
+// 3) All elements greater than b appear in the end.
+// The individual elements of three sets can appear in any order. You are required to return the modified array.
+
+// Note: The generated output is true if you modify the given array successfully. Otherwise false.
+
+// Geeky Challenge: Solve this problem in O(n) time complexity.
+
+// Examples:
+
+// Input: arr[] = [1, 2, 3, 3, 4], a = 1, b = 2
+// Output: true
+// Explanation: One possible arrangement is: {1, 2, 3, 3, 4}. If you return a valid arrangement, output will be true.
+function threeWayPartition(arr, a, b) {
+        // your code here
+        let low = 0
+       let mid = 0
+       let high = arr.length - 1
+       
+       while(mid <= high){
+        
+         
+         if(arr[mid] < a){
+            [arr[mid] , arr[low]] = [[arr[low] , arr[mid]]]
+            low++
+            mid++
+         }else if(arr[mid] <= b){
+             mid++
+         }else{
+             [arr[mid] , arr[high]] = [arr[high], arr[mid]]
+             high--
+         }
+         
+       }
+       return arr
+    }
+
+    console.log(threeWayPartition([1, 4, 3, 6, 2, 1], 1, 3)); // Output: [1, 2, 3, 4, 5] or similar partitioning based on the values of a and b
