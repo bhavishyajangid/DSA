@@ -430,37 +430,48 @@ function minSwaps(arr) {
 
 
 
+4. //Given two sorted arrays a[] and b[] of size n and m respectively, the task is to merge them in sorted order without using any extra space. Modify a[] so that it contains the first n elements and modify b[] so that it contains the last m elements.
 
+// Examples:
 
-function mergeTwoSortedArray(arr1 , arr2){
-   let i = 0
-   let j = 0
-   let temp = []
+// Input: a[] = [2, 4, 7, 10], b[] = [2, 3]
+// Output:
+// [2, 2, 3, 4]
+// [7, 10]
+// Explanation: After merging the two non-decreasing arrays, we get, 2 2 3 4 7 10
 
-   while(i < arr1.length && j < arr2.length){
-      if(arr1[i] <= arr2[j]){
-          temp.push(arr1[i])
-          i++
-      }else{
-        temp.push(arr2[j])
-          j++
-      }
-   }
+function mergeTwoSortedArray(a , b){
+        let n = a.length, m = b.length;
+        let gap = Math.ceil((n + m) / 2);
 
+        while (gap > 0) {
+            let i = 0, j = gap;
 
-   
-   while (i < arr1.length) {
-            temp.push(arr1[i]);
-            i++;
+            while (j < n + m) {
+                // Get values from virtual combined array
+                let val1 = (i < n) ? a[i] : b[i - n];
+                let val2 = (j < n) ? a[j] : b[j - n];
+
+                // Swap if needed
+                if (val1 > val2) {
+                    if (i < n && j < n) {
+                        [a[i], a[j]] = [a[j], a[i]];
+                    } else if (i < n && j >= n) {
+                        [a[i], b[j - n]] = [b[j - n], a[i]];
+                    } else {
+                        [b[i - n], b[j - n]] = [b[j - n], b[i - n]];
+                    }
+                }
+
+                i++;
+                j++;
+            }
+
+            gap = (gap === 1) ? 0 : Math.ceil(gap / 2);
         }
 
-        while (j < arr2.length) {
-            temp.push(arr2[j]);
-            j++;
-        }
-
-        
-        return [temp.slice(0 , arr1.length) , temp.slice(arr1.length)]
+        return [a, b];
+  
 }
 
-console.log(mergeTwoSortedArray([1 ,3, 5, 7] , [0 ,2, 6, 8, 9]));
+console.log(mergeTwoSortedArray([1,5,9,10,15,20] , [2,3,8,13]));

@@ -140,4 +140,34 @@ function sortWithoutMethod(arr) {
   }
 // console.log(getPairs([-1, 0, 1, 2, -1, -4]));   // easy but hard 
 
+
+
+function intersection(arr1, arr2) {
+        // code here
+        let obj  = {}
+        let common = []
+        
+        for(let i = 0 ; i < arr1.length ; i++){
+            if(obj[arr1[i]]){
+                obj[arr1[i]] = obj[arr1[i]]++
+            }else{
+                obj[arr1[i]] = 1
+            }
+        }
+        console.log(obj);
+
+        for (let j = 0; j < arr2.length; j++) {
+          
+          if(obj[arr2[j]]){
+            common.push(arr2[j]);
+            delete obj[arr2[j]]; 
+          }
+          
+        }
+
+        return common
+        
+    }
+
+    console.log(intersection([1, 2], [3, 4])); // [2, 3]
     
