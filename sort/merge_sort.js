@@ -474,4 +474,82 @@ function mergeTwoSortedArray(a , b){
   
 }
 
-console.log(mergeTwoSortedArray([1,5,9,10,15,20] , [2,3,8,13]));
+// console.log(mergeTwoSortedArray([1,5,9,10,15,20] , [2,3,8,13]));
+
+
+
+ function kLargest(arr, k) {
+        // Your code here
+        
+        let result = mergeSort(arr)
+        return result.slice(0, k)
+        
+    }
+    
+   function mergeSort(arr){
+        if(arr.length <= 1)return arr
+        
+        let mid = Math.floor(arr.length / 2)
+        
+        let left = mergeSort(arr.slice(0 , mid))
+        let right = mergeSort(arr.slice(mid))
+        
+        return merge(left , right)
+        
+    }
+    
+   function merge(left , right){
+        let sortedArray = []
+        
+        while(left.length && right.length){
+            if(left[0] > right[0]){
+                sortedArray.push(left.shift())
+            }else{
+                sortedArray.push(right.shift())
+            }
+        }
+        
+        return [...sortedArray , ...right, ...left]
+        
+    }
+
+    // console.log(kLargest([12, 5, 787, 1, 23] , 2));
+
+
+    5. // You are given two integer arrays a[] and b[] of equal size. A sum combination is formed by adding one element from a[] and one from b[], using each index pair (i, j) at most once. Return the top k maximum sum combinations, sorted in non-increasing order.
+
+// Examples:
+
+// Input: a[] = [3, 2], b[] = [1, 4], k = 2
+// Output: [7, 6]
+// Explanation: Possible sums: 3 + 1 = 4, 3 + 4 = 7, 2 + 1 = 3, 2 + 4 = 6, Top 2 sums are 7 and 6.
+
+   function  topKSumPairs(a, b, k) {
+        // code here
+       
+        let solution = []
+        let arr1  = mergeSort(a)
+        let arr2 = mergeSort(b)
+
+        
+        console.log(arr1 , arr2);
+
+        let i = 0
+        let j = 0
+        while(j < k && i < k){
+          console.log(arr1[i] , arr2[j]);
+          
+           solution.push(arr2[j]+arr1[i])
+           if(arr2[j] > arr1[i]){
+              i++
+           }else{
+             j++
+           }
+        }
+        
+        return solution
+    }
+
+    console.log(topKSumPairs([1, 4, 2, 3] ,[2, 5, 1, 6] ,3));
+    
+    
