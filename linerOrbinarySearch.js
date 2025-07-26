@@ -363,8 +363,7 @@ function kthMissing(arr, k) {
 
 // console.log(kthMissing([2, 3, 4, 7, 11], 5));
 
-
-10 // Given an array of n distinct elements. Check whether the given array is a k-sorted array or not. A k-sorted array is an array where each element is at most k distance away from its target position in the sorted array. 
+10; // Given an array of n distinct elements. Check whether the given array is a k-sorted array or not. A k-sorted array is an array where each element is at most k distance away from its target position in the sorted array.
 // Return "Yes" if the array is a k-sorted array else return "No".
 
 // Examples
@@ -407,59 +406,53 @@ function kthSorted(arr, k) {
 
 // console.log(kthSorted([3, 2, 1, 5, 6, 4], 2));
 
-11 //. You are given two unsorted arrays a[] and b[]. Both arrays may contain duplicate elements. For each element in a[], your task is to count how many elements in b[] are less than or equal to that element.
+11; //. You are given two unsorted arrays a[] and b[]. Both arrays may contain duplicate elements. For each element in a[], your task is to count how many elements in b[] are less than or equal to that element.
 
 // Examples:
 
 // Input: a[] = [4, 8, 7, 5, 1], b[] = [4, 48, 3, 0, 1, 1, 5]
 // Output: [5, 6, 6, 6, 3]
-// Explanation: 
+// Explanation:
 // For a[0] = 4, there are 5 elements in b (4, 3, 0, 1, 1) that are ≤ 4.
 // For a[1] = 8 and a[2] = 7, there are 6 elements in b that are ≤ 8 and ≤ 7.
 // For a[3] = 5, there are 6 elements in b that are ≤ 5.
 // For a[4] = 1, there are 3 elements in b (0, 1, 1) that are ≤ 1.
 
+function findSmallestNumber(arr, target) {
+  let start = 0;
+  let end = arr.length - 1;
+  let ans = 0;
 
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
 
-
-function findSmallestNumber(arr , target){
- let start = 0;
-    let end = arr.length - 1;
-    let ans = 0;
-
-    while (start <= end) {
-      let mid = Math.floor((start + end) / 2);
-
-      if (arr[mid] <= target) {
-        ans = mid + 1; // Because we're counting (0-based index)
-        start = mid + 1;
-      } else {
-        end = mid - 1;
-      }
+    if (arr[mid] <= target) {
+      ans = mid + 1; // Because we're counting (0-based index)
+      start = mid + 1;
+    } else {
+      end = mid - 1;
     }
+  }
 
-    return ans;
+  return ans;
 }
 
-
 function countLessEq(arr, brr) {
-        // code here
-        let result = []
-       let sortArr = brr.sort((a, b) => a-b)
- 
-       for (let i = 0; i < arr.length; i++) {
-        let number = findSmallestNumber(sortArr , arr[i])
-         result.push(number)
-       }
- 
-       return result
-        
-    }
+  // code here
+  let result = [];
+  let sortArr = brr.sort((a, b) => a - b);
 
-    // console.log(countLessEq([85 ,54 ,60 ,75 ,76 ,89 ,70 ,41 ,89],   [68, 31, 72, 10, 41, 33, 43, 24, 28, 49, 24, 75, 90, 68, 17, 41, 5]));
-    
-    
-  12 // . Given two arrays a[] and b[], your task is to determine whether b[] is a subset of a[].
+  for (let i = 0; i < arr.length; i++) {
+    let number = findSmallestNumber(sortArr, arr[i]);
+    result.push(number);
+  }
+
+  return result;
+}
+
+// console.log(countLessEq([85 ,54 ,60 ,75 ,76 ,89 ,70 ,41 ,89],   [68, 31, 72, 10, 41, 33, 43, 24, 28, 49, 24, 75, 90, 68, 17, 41, 5]));
+
+12; // . Given two arrays a[] and b[], your task is to determine whether b[] is a subset of a[].
 
 // Examples:
 
@@ -467,62 +460,61 @@ function countLessEq(arr, brr) {
 // Output: true
 // Explanation: b[] is a subset of a[]
 
- function isSubset(a, b) {
-        let freq = {};
+function isSubset(a, b) {
+  let freq = {};
 
-        // Build frequency map of array A
-        for (let i = 0; i < a.length; i++) {
-            freq[a[i]] = (freq[a[i]] || 0) + 1;
-        }
+  // Build frequency map of array A
+  for (let i = 0; i < a.length; i++) {
+    freq[a[i]] = (freq[a[i]] || 0) + 1;
+  }
 
-        // Check elements of B
-        for (let i = 0; i < b.length; i++) {
-            if (!freq[b[i]]) {
-                return false; // element not found or used up
-            }
-            freq[b[i]]--;
-        }
-
-        return true;
+  // Check elements of B
+  for (let i = 0; i < b.length; i++) {
+    if (!freq[b[i]]) {
+      return false; // element not found or used up
     }
+    freq[b[i]]--;
+  }
 
-    // console.log(isSubset([11, 7, 1, 13, 21, 3, 7, 3] , [11, 3, 7, 1, 7]));
+  return true;
+}
 
+// console.log(isSubset([11, 7, 1, 13, 21, 3, 7, 3] , [11, 3, 7, 1, 7]));
 
-    13.// Given a sorted array arr and an integer k, find the position(0-based indexing) at which k is present in the array using binary search.
+13; // Given a sorted array arr and an integer k, find the position(0-based indexing) at which k is present in the array using binary search.
 
 // Note: If multiple occurrences are there, please return the smallest index.
 // Input: arr[] = [1, 2, 3, 4, 5], k = 4
 // Output: 3
 // Explanation: 4 appears at index 3.
 
- function binarysearch(arr, k) {
-        // Code Here
-        let start = 0
-        let end = arr.length - 1
-        
-        while(start <= end){
-            let mid = Math.floor((start + end) /2)
-            
-            if(arr[mid] < k){
-                start = mid+ 1
-            }else{
-                if(arr[mid] == k){
-                    if(arr[mid -1] == k){
-                        end = mid - 1
-                    }else{
-                        return mid
-                    }
-                }
-                end = mid - 1
-            }
+function binarysearch(arr, k) {
+  // Code Here
+  let start = 0;
+  let end = arr.length - 1;
+
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+
+    if (arr[mid] < k) {
+      start = mid + 1;
+    } else {
+      if (arr[mid] == k) {
+        if (arr[mid - 1] == k) {
+          end = mid - 1;
+        } else {
+          return mid;
         }
-        return -1
+      }
+      end = mid - 1;
     }
-    
-    // console.log(binarysearch([1, 2, 3, 4, 5] , 4));
-    
- 14  // Given a sorted array arr[] and an integer x, find the index (0-based) of the largest element in arr[] that is less than or equal to x. This element is called the floor of x. If such an element does not exist, return -1.
+  }
+  return -1;
+}
+
+// console.log(binarysearch([1, 2, 3, 4, 5] , 4));
+
+14; // Given a sorted array arr[] and an integer x, find the index (0-based) of the largest element in arr[] that is less than or equal to x. This element is called the floor of x. If such an element does not exist, return -1.
 
 // Note: In case of multiple occurrences of ceil of x, return the index of the last occurrence.
 
@@ -532,26 +524,71 @@ function countLessEq(arr, brr) {
 // Output: 1
 // Explanation: Largest number less than or equal to 5 is 2, whose index is 1.
 
- function findFloor(arr, x) {
-        // your code here
-        let start = 0
-        let end = arr.length - 1
-        let findIndex = -1
-        
-        while(start <= end){
-           let mid = Math.floor((start + end) /2 )
-           
-           if(arr[mid] == x){
-               findIndex = mid
-               start = mid + 1
-           }else if(arr[mid] < x){
-               findIndex = mid
-               start = mid + 1
-           }else{
-               end = mid  -1
-           }
-        }
-        return findIndex
+function findFloor(arr, x) {
+  // your code here
+  let start = 0;
+  let end = arr.length - 1;
+  let findIndex = -1;
+
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+
+    if (arr[mid] == x) {
+      findIndex = mid;
+      start = mid + 1;
+    } else if (arr[mid] < x) {
+      findIndex = mid;
+      start = mid + 1;
+    } else {
+      end = mid - 1;
     }
-    // console.log(findFloor([1, 2, 8, 10, 10, 12, 19] , 5));
-    
+  }
+  return findIndex;
+}
+// console.log(findFloor([1, 2, 8, 10, 10, 12, 19] , 5));
+
+15; // Given a sorted array, arr[] and a number target, you need to find the number of occurrences of target in arr[].
+
+// Examples :
+
+// Input: arr[] = [1, 1, 2, 2, 2, 2, 3], target = 2
+// Output: 4
+// Explanation: target = 2 occurs 4 times in the given array so the output is 4.
+
+function countFreq(arr, target) {
+  // code here
+  let left = searchTarget(arr, target);
+  console.log(left);
+
+  if (left == 0) return 0;
+
+  let right = searchTarget(arr.reverse(), target);
+
+  let result = Math.abs(left - (arr.length - right));
+ return result
+}
+
+function searchTarget(arr, target) {
+  let start = 0;
+  let end = arr.length - 1;
+
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+
+    if (arr[mid] == target) {
+      if (arr[mid - 1] == target) {
+        end = mid - 1;
+      } else {
+        return mid;
+      }
+    } else if (arr[mid] < target) {
+      start = mid + 1;
+    } else {
+      end = mid - 1;
+    }
+  }
+
+  return 0;
+}
+
+console.log(countFreq( [8, 9, 10, 12, 12, 12], 12));
