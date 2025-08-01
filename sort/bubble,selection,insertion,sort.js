@@ -32,7 +32,7 @@ function selectionSort(arr) {
   for (let i = 0; i < m - 1; i++) {
     let minIndex = i;
     for (let j = i + 1; j < m; j++) {
-      if (arr[minIndex] > arr[j]) {
+      if (arr[minIndex] > arr[j]) { 
         minIndex = j;
       }
     }
@@ -170,4 +170,7 @@ function intersection(arr1, arr2) {
     }
 
     console.log(intersection([1, 2], [3, 4])); // [2, 3]
+
+
+    
     
