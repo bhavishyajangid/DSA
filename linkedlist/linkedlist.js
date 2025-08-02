@@ -131,12 +131,15 @@ class linkedList{
 }
 
 const LinkedList = new linkedList()
-LinkedList.addFirst(10)   // this is the last element
-LinkedList.addFirst(20)
-LinkedList.addFirst(30)   // the last node is the head 
-LinkedList.addLast(40)
-LinkedList.removeLast()
-LinkedList.print()
+LinkedList.addLast(1)   // this is the last element
+LinkedList.addLast(2)
+LinkedList.addLast(3)
+LinkedList.addLast(4)
+LinkedList.addLast(5)
+LinkedList.addLast(6)   // the last node is the head 
+// LinkedList.addLast(70)
+// LinkedList.removeLast()
+// LinkedList.print()
 
 
 
@@ -182,11 +185,171 @@ class Solution {
         }
         return prev
     }
+
+    3. //     Given the head of a linked list, the task is to find the middle. For example, the middle of 1-> 2->3->4->5 is 3. If there are two middle nodes (even count), return the second middle. For example, middle of 1->2->3->4->5->6 is 4.
+
+// Examples:
+
+// Input: Linked list: 1->2->3->4->5
+// Output: 3
+
+// Explanation: The given linked list is 1->2->3->4->5 and its middle is 3.
+// Input: Linked list: 2->4->6->7->5->1
+// Output: 7 
+
+// Explanation: The given linked list is 2->4->6->7->5->1 and its middle is 7.
+
+  // this is my approach 
+   getMiddle(head) {
+    if (head === null) return -1;
+
+    let mid = Math.floor(this.size(head) / 2); // mid = 3 for 6 nodes
+    let current = head;
+
+    for (let i = 0; i < mid; i++) {
+        current = current.next;
+    }
+
+    return current.data;
+}
+
+size(head) {
+    let count = 0;
+    let current = head;
+
+    while (current !== null) {
+        count++;
+        current = current.next;
+    }
+
+    return count;
+}
+
+  // this is more optmisied approach 
+
+//   getMiddle(head) {
+//     if (head === null) return -1;
+
+//     let slow = head;
+//     let fast = head;
+
+//     while (fast !== null && fast.next !== null) {
+//         slow = slow.next;
+//         fast = fast.next.next;
+//     }
+
+//     return slow.data;
+// }
+
+
+4. // Given a singly linked list. The task is to remove duplicates (nodes with duplicate values) from the given list (if it exists).
+// Note: Try not to use extra space. The nodes are arranged in a sorted way.
+
+// Examples:
+
+// Input:
+// LinkedList: 2->2->4->5
+// Output: 2 -> 4 -> 5
+
+// Explanation: In the given linked list 2 -> 2 -> 4 -> 5, only 2 occurs more than 1 time. So we need to remove it once.
+
+ removeDuplicates(head) {
+        // your code here
+        if(head == null) return head
+
+        let current = head
+
+        
+        while(current !== null && current.next !== null){
+            console.log(current.data , current.next.data);
+            
+            if(current.data == current.next.data){
+                current.next = current.next.next
+            }else{
+                current = current.next
+            }
+        }
+        return head
+    }
+
+
+    5. //     You are given the head of a linked list and the number k, You have to return the kth node from the end of linkedList. If k is more than the number of nodes, then the return -1.
+
+// Examples
+
+// Input: LinkedList: 1->2->3->4->5->6->7->8->9, k = 2
+// Output: 8
+// Explanation: The given linked list is 1->2->3->4->5->6->7->8->9. The 2nd node from end is 8.
+
+// this is my approach
+ getKthFromLast(head, k) {
+        // code here
+        let current = head 
+        if(k > this.size(head)) return -1
+
+        let lastIndex = this.size(head) - k
+
+       
+        for (let i = 0; i < lastIndex; i++) {
+           current = current.next
+        }
+
+        return current.data
+         
+    }
+
+    // this is more optmised approach
+    // getKthFromLast(head, k) {
+    //     if (head === null || k <= 0) return -1;
+
+    //     let fast = head;
+    //     let slow = head;
+
+    //     // Move fast k steps ahead
+    //     for (let i = 0; i < k; i++) {
+    //         if (fast === null) return -1; // k > size
+    //         fast = fast.next;
+    //     }
+
+    //     // Move both until fast reaches the end
+    //     while (fast !== null) {
+    //         slow = slow.next;
+    //         fast = fast.next;
+    //     }
+
+    //     return slow.data;
+    // }
+
+ deleteNode(head, index) {
+        // code here
+
+         if(index == 0){
+             head = head.next
+             return
+         }
+
+         let current = head
+
+         for (let i = 1; i < index-1 ; i++) {
+              current = current.next
+         }
+        
+        
+         if(current.next){
+            current.next = current.next.next
+         }
+         return head
+    }
+
 }
 
 const result = new Solution()
 // console.log(result.isPalindrome(LinkedList.head));
 
-console.log(result.reverseList(LinkedList.head));
+// console.log(result.reverseList(LinkedList.head));
+// console.log(result.getMiddle(LinkedList.head));
+// console.log(result.removeDuplicates(LinkedList.head));
+// console.log(result.getKthFromLast(LinkedList.head , 2));
+console.log(result.deleteNode(LinkedList.head , 2));
 
 
