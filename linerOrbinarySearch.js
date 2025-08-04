@@ -591,4 +591,27 @@ function searchTarget(arr, target) {
   return 0;
 }
 
-console.log(countFreq( [8, 9, 10, 12, 12, 12], 12));
+// console.log(countFreq( [8, 9, 10, 12, 12, 12], 12));
+
+function missingNumber(arr) {
+        // code here
+        arr.sort((a, b) => a-b)
+
+        for(let i = 1  ; i <arr.length -1 ; i++){
+          console.log(arr , arr[i]+1 , arr[i+1]);
+          
+          if(arr[i]+1 !== arr[i + 1] && arr[i] >= 0 && arr[i] !== arr[i+1]){
+             if(arr[i] > 1){
+               return 1
+             }else{
+              return arr[i] + 1
+             }
+          }
+        }
+
+        return arr[arr.length-1]+1
+       
+    }
+
+    console.log(missingNumber( [2 ,6 ,2 ,-8, -7, 8]));
+    
