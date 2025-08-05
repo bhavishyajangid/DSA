@@ -129,13 +129,14 @@ class linkedList {
 }
 
 const LinkedList = new linkedList();
-LinkedList.addLast(0); // this is the last element
-LinkedList.addLast(0);
-LinkedList.addLast(6);
-LinkedList.addLast(3);
-// LinkedList.addLast(5)
-// LinkedList.addLast(6)   // the last node is the head
-// LinkedList.addLast(70)
+LinkedList.addLast(1); // this is the last element
+LinkedList.addLast(2);
+LinkedList.addLast(2);
+LinkedList.addLast(1);
+LinkedList.addLast(2)
+LinkedList.addLast(0)   // the last node is the head
+LinkedList.addLast(2)
+LinkedList.addLast(2)
 // LinkedList.removeLast()
 // LinkedList.print()
 
@@ -404,7 +405,64 @@ class Solution {
        return dummy.next
       
    }
+
+   7. //    * important Given the head of a linked list where nodes can contain values 0s, 1s, and 2s only. Your task is to rearrange the list so that all 0s appear at the beginning, followed by all 1s, and all 2s are placed at the end.
+
+// Examples:
+
+// Input: head = 1 → 2 → 2 → 1 → 2 → 0 → 2 → 2
+
+// Output: 0 → 1 → 1 → 2 → 2 → 2 → 2 → 2
+
+// Explanation: All the 0s are segregated to the left end of the linked list, 2s to the right end of the list, and 1s in between.
+
+ segregate(head) {
+        // code here
+        let current = head
+        let zeroHead = new Node(-1)  // create the node for 0 
+        let oneHead = new Node(-1)   // create the node for 1
+        let twoHead = new Node(-1)  // create the node for 2
+        let zeroTail = zeroHead     // store its head this is current = head same 
+        let oneTail = oneHead
+        let twoTail = twoHead
+
+        while(current){
+          if(current.data == 0){
+            // if the data is 0 then make a new node add this node into the zero tail linkedlist in the last this.addLast add the value in the last and retur a new linkedlist so we make new linkedlist equal to old
+           zeroTail = this.addLast(zeroTail , current.data)
+          }else if(current.data == 1){
+            oneTail = this.addLast(oneTail , current.data)
+          }else{
+             twoTail = this.addLast(twoTail , current.data)
+          }
+          // take the next value of the linkedlist
+          current = current.next
+        }
+
+        // add the three linkedlist the zertail is the last node of the linkedlist because we nake a new node every time and add them linkedlist then increase the zerotail and the zeroHead.next is always  the first elemtnt of the linkedlist so the first element to the linkedlist connect to the second and second to third and set the third last lement to null because the last node of the linked list next value is null
+        zeroTail.next = oneHead.next || twoHead.next
+        oneTail.next = twoHead.next
+        twoTail.next = null
+
+        return zeroHead.next
+
+ }
+
+ addLast(tail , data){
+  // make a new node
+    const newNode = new Node(data);
+    // pass the newnode to the next
+  tail.next = newNode;
+  // return the node
+  return newNode
+ }
+  
+
 }
+
+
+
+    
 
 const result = new Solution();
 // console.log(result.isPalindrome(LinkedList.head));
@@ -414,4 +472,5 @@ const result = new Solution();
 // console.log(result.removeDuplicates(LinkedList.head));
 // console.log(result.getKthFromLast(LinkedList.head , 2));
 // console.log(result.deleteNode(LinkedList.head , 2));
-console.log(result.addTwoLists(LinkedList.head, roughLinked.head));
+// console.log(result.addTwoLists(LinkedList.head, roughLinked.head));
+console.log(result.segregate(LinkedList.head));
