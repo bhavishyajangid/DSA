@@ -456,6 +456,85 @@ class Solution {
   // return the node
   return newNode
  }
+
+ 8. //  *important Given the head of a singly linked list, your task is to left rotate the linked list k times.
+
+// Examples:
+
+// Input: head = 10 -> 20 -> 30 -> 40 -> 50, k = 4
+// Output: 50 -> 10 -> 20 -> 30 -> 40
+// Explanation:
+// Rotate 1: 20 -> 30 -> 40 -> 50 -> 10
+// Rotate 2: 30 -> 40 -> 50 -> 10 -> 20
+// Rotate 3: 40 -> 50 -> 10 -> 20 -> 30
+// Rotate 4: 50 -> 10 -> 20 -> 30 -> 40
+  rotate(head, k) {
+        // your code here
+       if(!head || k == 0)return head
+
+       
+       let tail = head
+       let length = 1
+ 
+       // going to the last of the node and also count the length
+       while(tail.next){
+        tail = tail.next
+        length++
+       }
+
+       k = k % length  // calculate how much time rotate like k = 15 so 15%5 = 3 meas rotate 3 times
+
+       if(k==0) return head
+
+       let prev = null  // store kth prev value
+       let current = head // store kthvalue
+       let count = 0  
+
+       while(count < k){
+        prev = current
+          current = current.next
+          count++
+       }
+
+       // make the kth prev value to null because after this roatetion will start and this is the last node so we make it null
+       prev.next = null
+       // then we add the our last node of the linked list to the start and make it circular linked list which mean there is no null node in it but before we make a null node which is kth previus node
+       tail.next = head
+       // make the kth node to the head the current is the complete linked list after the kth node and there is no null in it before we make it circular and so the linked list start from it and the end with pre.next mean kth prev node 
+       head = current
+
+       return head
+    }
+
+    9. //     You are given the head of a singly linked list. Your task is to determine if the linked list contains a loop. A loop exists in a linked list if the next pointer of the last node points to any other node in the list (including itself), rather than being null.
+
+// Custom Input format:
+// A head of a singly linked list and a pos (1-based index) which denotes the position of the node to which the last node points to. If pos = 0, it means the last node points to null, indicating there is no loop.
+
+// Examples:
+
+// Input: head: 1 -> 3 -> 4, pos = 2
+// Output: true
+// Explanation: There exists a loop as last node is connected back to the second node.
+
+    detectLoop(head) {
+        // code here
+        let slow = head
+        let fast = head
+        
+        while(fast !== null  && fast.next !== null){
+            slow = slow.next
+            fast = fast.next.next
+            
+            if(fast == slow){
+                return true
+            }
+        }
+        
+        return false
+    }
+
+    
   
 
 }
@@ -473,4 +552,5 @@ const result = new Solution();
 // console.log(result.getKthFromLast(LinkedList.head , 2));
 // console.log(result.deleteNode(LinkedList.head , 2));
 // console.log(result.addTwoLists(LinkedList.head, roughLinked.head));
-console.log(result.segregate(LinkedList.head));
+// console.log(result.segregate(LinkedList.head));
+console.log(result.rotate(LinkedList.head , 4));
