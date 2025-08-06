@@ -129,14 +129,14 @@ class linkedList {
 }
 
 const LinkedList = new linkedList();
-LinkedList.addLast(1); // this is the last element
-LinkedList.addLast(2);
-LinkedList.addLast(2);
-LinkedList.addLast(1);
-LinkedList.addLast(2)
-LinkedList.addLast(0)   // the last node is the head
-LinkedList.addLast(2)
-LinkedList.addLast(2)
+LinkedList.addLast(10); // this is the last element
+LinkedList.addLast(20);
+LinkedList.addLast(30);
+LinkedList.addLast(40);
+LinkedList.addLast(50)
+// LinkedList.addLast(0)   // the last node is the head
+// LinkedList.addLast(2)
+// LinkedList.addLast(2)
 // LinkedList.removeLast()
 // LinkedList.print()
 
