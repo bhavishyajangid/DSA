@@ -11,7 +11,7 @@ set.add("b");
 set.add(13);
 set.add(14);
 set.add(10); // this will automaticall remove because hash store only unique element
-console.log(set); // output : - 10,12,13,14
+// console.log(set); // output : - 10,12,13,14
 
 // set.has() // check the element present in or not
 
@@ -57,57 +57,52 @@ function checkPangram(s) {
 
   return set.size == 26;
 }
-console.log(checkPangram("Bawds jog, flick quartz, vex nymph"));
-
-
+// console.log(checkPangram("Bawds jog, flick quartz, vex nymph"));
 
 // ************************ MAP ************************
 
-// map is same as object in the map we store datain the form of key and value and always the key is unique in the map value must bt unique or same but the key is always unique 
+// map is same as object in the map we store datain the form of key and value and always the key is unique in the map value must bt unique or same but the key is always unique
 
-let map  = new Map()
-map.set("ram" , 6) // keys always write in string 
-map.set("age" , 6)
-map.set("isAdmin" , true)
+let map = new Map();
+map.set("ram", 6); // keys always write in string
+map.set("age", 6);
+map.set("isAdmin", true);
 
-map.has("ram") // check the key present in the map or not 
-map.delete('ram') // delete the data
-map.size // size of the map 
-map.get('ram') // take key and gives value of that key
+map.has("ram"); // check the key present in the map or not
+map.delete("ram"); // delete the data
+map.size; // size of the map
+map.get("ram"); // take key and gives value of that key
 
 // ************************ print the key value of the map **************
 
-for(let [key , value] of map){
-    console.log(key + '=>' + value);
+for (let [key, value] of map) {
+  // console.log(key + '=>' + value);
 }
 
 // ******************** print only key of the map *********
-for(let key of map.keys()){
-    console.log(key);
+for (let key of map.keys()) {
+  // console.log(key);
 }
 
 // ******************* print only value ************
-for(let value of map.values()){
-    console.log(value);
-    
+for (let value of map.values()) {
+  // console.log(value);
 }
 
+// find the frequency of the element present in the array using map
 
-// find the frequency of the element present in the array using map 
-
-let arr2 = [10,20,30,1,0,54,,10,20,40,50,10]
-let map2 = new Map()
+let arr2 = [10, 20, 30, 1, 0, 54, , 10, 20, 40, 50, 10];
+let map2 = new Map();
 for (let i = 0; i < arr.length; i++) {
-    if(map.has(arr[i])){
-         map.set(arr[i] , map.get(arr[i]) + 1)  // rewrite the key 
-    }else{
-        map.set(arr[i] , 1)
-    }
-    
+  if (map.has(arr[i])) {
+    map.set(arr[i], map.get(arr[i]) + 1); // rewrite the key
+  } else {
+    map.set(arr[i], 1);
+  }
 }
-console.log(map);
+// console.log(map);
 
-1. 
+1;
 // Given an array arr[] of integers and another integer target. Determine if there exist two distinct indices such that the sum of their elements is equal to the target.
 
 // Examples:
@@ -119,54 +114,49 @@ console.log(map);
 // Output: false
 // Explanation: None of the pair makes a sum of 0
 
- function twoSum(arr, target) {
-        // code here
-        let map  = new Map()
-        
-        
-        for(let i = 0 ; i < arr.length ; i++){
-         let diff =   target - arr[i]  // calculate the diff between the target and emelent like 9-4 = 5 if the five is present in the map the return true
-         
-         if(map.has(diff)){ 
-             return true
-         }else{
-            // then store the value in the map and check again 
-             map.set(arr[i] , i)
-         }
-         
-        }
-        
-        return false
-        
+function twoSum(arr, target) {
+  // code here
+  let map = new Map();
+
+  for (let i = 0; i < arr.length; i++) {
+    let diff = target - arr[i]; // calculate the diff between the target and emelent like 9-4 = 5 if the five is present in the map the return true
+
+    if (map.has(diff)) {
+      return true;
+    } else {
+      // then store the value in the map and check again
+      map.set(arr[i], i);
     }
+  }
 
+  return false;
+}
 
-    2. //     Given two unsorted integer arrays a[] and b[] each consisting of distinct elements, the task is to return the count of elements in the intersection (or common elements) of the two arrays.
+2; //     Given two unsorted integer arrays a[] and b[] each consisting of distinct elements, the task is to return the count of elements in the intersection (or common elements) of the two arrays.
 
-// Intersection of two arrays can be defined as the set containing distinct common elements between the two arrays. 
+// Intersection of two arrays can be defined as the set containing distinct common elements between the two arrays.
 
 // Examples:
 
 // Input: a[] = [89, 24, 75, 11, 23], b[] = [89, 2, 4]
 // Output: 1
 // Explanation: 89 is the only element in the intersection of two arrays.
-   function intersectSize(a, b) {
-        // code here
-        let map = new Map()
-        let count = 0
-        for(let i = 0 ; i < a.length ; i++){
-            map.set(a[i] , i)
-        }
-        
-        for(let j = 0 ; j < b.length ; j++){
-            if(map.has(b[j])) count++
-        }
-        
-        
-        return count
-    }
+function intersectSize(a, b) {
+  // code here
+  let map = new Map();
+  let count = 0;
+  for (let i = 0; i < a.length; i++) {
+    map.set(a[i], i);
+  }
 
-    3. //     Given an unsorted array arr[] of integers, find the number of subarrays whose sum exactly equal to a given number k.
+  for (let j = 0; j < b.length; j++) {
+    if (map.has(b[j])) count++;
+  }
+
+  return count;
+}
+
+3; //     Given an unsorted array arr[] of integers, find the number of subarrays whose sum exactly equal to a given number k.
 
 // Examples:
 
@@ -176,19 +166,111 @@ console.log(map);
 // Input: arr[] = [9, 4, 20, 3, 10, 5], k = 33
 // Output: 2
 // Explaination: Subarrays: arr[0...2], arr[2...4] have sum exactly equal to 33.
-    function cntSubarrays(arr, k) {
-        // code here
-        let map = new Map()
-        let sum = 0 , count = 0
-        
-        map.set(sum , 1)
-        
-        for(let i = 0 ; i < arr.length ; i++){
-            sum += arr[i]
-            if(map.has(sum-k)) count += map.get(sum-k)
-            
-            map.set(sum , (map.get(sum) || 0) + 1)
-        }
-        
-        return count
+function cntSubarrays(arr, k) {
+  // code here
+  let map = new Map();
+  let sum = 0,
+    count = 0;
+
+  map.set(sum, 1);
+
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+    if (map.has(sum - k)) count += map.get(sum - k);
+
+    map.set(sum, (map.get(sum) || 0) + 1);
+  }
+
+  return count;
+}
+
+4; // Given two arrays a[] and b[] of equal size, the task is to find whether the elements in the arrays are equal.
+// Two arrays are said to be equal if both contain the same set of elements, arrangements (or permutations) of elements may be different though.
+// Note: If there are repetitions, then counts of repeated elements must also be the same for two arrays to be equal.
+
+// Examples:
+
+// Input: a[] = [1, 2, 5, 4, 0], b[] = [2, 4, 5, 0, 1]
+// Output: true
+// Explanation: Both the array can be rearranged to [0,1,2,4,5]
+// Input: a[] = [1, 2, 5], b[] = [2, 4, 15]
+// Output: false
+// Explanation: a[] and b[] have only one common value.
+function checkEqual(a, b) {
+  // code here
+  let map = new Map();
+
+  for (let i = 0; i < a.length; i++) {
+    map.set(a[i], (map.get(a[i]) || 0) + 1);
+  }
+  console.log(map);
+
+  for (let j = 0; j < b.length; j++) {
+    if (map.get(b[j]) > 0) {
+      map.set(b[j], map.get(b[j]) - 1);
+    } else {
+      return false;
     }
+  }
+
+  return true;
+}
+// console.log(checkEqual([1, 2, 5, 4, 0] , [2,4 ,5 ,0,1]));
+
+5; //You are given an array arr[] containing positive integers. The elements in the array arr[] range from  1 to n (where n is the size of the array), and some numbers may be repeated or absent. Your have to count the frequency of all numbers in the range 1 to n and return an array of size n such that result[i] represents the frequency of the number i (1-based indexing).
+
+// Examples:
+
+// Input: arr[] = [2, 3, 2, 3, 5]
+// Output: [0, 2, 2, 0, 1]
+// Explanation: We have: 1 occurring 0 times, 2 occurring 2 times, 3 occurring 2 times, 4 occurring 0 times, and 5 occurring 1 time.
+// Input: arr[] = [3, 3, 3, 3]
+// Output: [0, 0, 4, 0]
+// Explanation: We have: 1 occurring 0 times, 2 occurring 0 times, 3 occurring 4 times, and 4 occurring 0 times.
+
+function frequencyCount(arr) {
+  // code here
+  let map = new Map();
+  let arry = [];
+  for (let i = 0; i < arr.length; i++) {
+    map.set(arr[i], (map.get(arr[i]) || 0) + 1);
+  }
+
+  for (let j = 1; j <= arr.length; j++) {
+    if (map.get(j)) {
+      arry.push(map.get(j));
+    } else {
+      arry.push(0);
+    }
+  }
+
+  return arry;
+}
+
+// console.log(frequencyCount([1]));
+
+function findTriplets(arr) {
+  // code here
+
+  let map = new Map();
+
+  for (let k = 0; k < arr.length; k++) {
+    map.set(arr[k], (map.get(arr[k]) || 0) + 1);
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i+1; j < arr.length; j++) {
+      let sum = arr[i] + arr[j];
+    //   console.log(sum , arr[i] , arr[j] , 'before');
+      
+      sum = -sum;
+    //   console.log(sum , arr[i] , arr[j]);
+      
+      if (map.has(sum) && arr[i] !== sum && arr[j] !== sum) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+console.log(findTriplets([44, 33, 18, -22, -37, -13, -35, 37, -13]));
