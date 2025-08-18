@@ -272,5 +272,111 @@ function findTriplets(arr) {
     }
   }
   return false;
+  
 }
-console.log(findTriplets([44, 33, 18, -22, -37, -13, -35, 37, -13]));
+// console.log(findTriplets([44, 33, 18, -22, -37, -13, -35, 37, -13]));
+
+
+ 7. // **Given an array arr[] of integers and another integer target. You have to find all unique quadruples from the given array whose sum is equal to the given target.
+
+// Note: All the quadruples should be internally sorted, i.e for any quadruple [q1, q2, q3, q4] it should be : q1 ≤ q2 ≤ q3 ≤ q4.
+
+// Examples :
+
+// Input: arr[] = [0, 0, 2, 1, 1], target = 3
+// Output: [[0, 0, 1, 2]]
+// Explanation: Sum of 0, 0, 1, 2 is equal to 3.
+// Input: arr[] = [10, 2, 3, 4, 5, 7, 8], target = 23
+// Output: [[2, 3, 8, 10], [2, 4, 7, 10], [3, 5, 7, 8]] 
+// Explanation: Sum of [2, 3, 8, 10] is 23, sum of [2, 4, 7, 10] is 23 and sum of [3, 5, 7, 8] is also 23.
+// Input: arr[] = [0, 0, 2, 1, 1], target = 2
+// Output: [[0, 0, 1, 1]]
+// Explanation: Sum of [0, 0, 1, 1] is equal to 2
+
+function fourSumHash(arr, target) {
+    const n = arr.length;
+    arr.sort((a, b) => a - b); // sort to handle duplicates easily
+    const pairSum = new Map();
+    const result = new Set();
+
+    // Step 1: Store all pairs in hash map
+    for (let i = 0; i < n; i++) {
+        for (let j = i + 1; j < n; j++) {
+            let sum = arr[i] + arr[j];
+            if (!pairSum.has(sum)) {
+                pairSum.set(sum, []);
+            }
+            pairSum.get(sum).push([i, j]); // store indices
+        }
+    }
+
+    // Step 2: Check for complementary pairs
+    for (let i = 0; i < n; i++) {
+        for (let j = i + 1; j < n; j++) {
+            let sum = arr[i] + arr[j];
+            let remaining = target - sum;
+
+            if (pairSum.has(remaining)) {
+                for (let [x, y] of pairSum.get(remaining)) {
+                    // Ensure no index overlaps
+                    if (x !== i && x !== j && y !== i && y !== j) {
+                        let quad = [arr[i], arr[j], arr[x], arr[y]].sort((a, b) => a - b);
+                        result.add(JSON.stringify(quad)); // store unique as string
+                    }
+                }
+            }
+        }
+    }
+
+    // Convert set back to array
+    return Array.from(result).map(q => JSON.parse(q));
+}
+
+// console.log(fourSumHash([10, 2, 3, 4, 5, 7, 8], 23));
+
+
+8. // You are given two arrays a[] and b[], return the Union of both the arrays in any order.
+
+// The Union of two arrays is a collection of all distinct elements present in either of the arrays. If an element appears more than once in one or both arrays, it should be included only once in the result.
+
+// Note: Elements of a[] and b[] are not necessarily distinct.
+// Note that, You can return the Union in any order but the driver code will print the result in sorted order only.
+
+// Examples:
+
+// Input: a[] = [1, 2, 3, 2, 1], b[] = [3, 2, 2, 3, 3, 2]
+// Output: [1, 2, 3]
+// Explanation: Union set of both the arrays will be 1, 2 and 3.
+
+function findUnion(a, b) {
+        // code here
+        let result = []
+       let map = new Map()
+        let max = Math.max(a.length , b.length)
+        
+       for (let i = 0; i < max; i++) {
+        if(i < a.length){
+            if(!map.get(a[i])){
+               map.set(a[i] , 1)
+            }
+        }
+
+        if(i < b.length){
+           if(!map.get(b[i])){
+               map.set(b[i] , 1)
+            }
+        }
+        
+       }
+
+      
+       for (let key of map.keys()) {
+     result.push(key)
+}
+        return result;
+        
+    }
+
+    console.log(findUnion([1, 2, 3] , [4, 5, 6] ))
+    
+
