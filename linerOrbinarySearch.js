@@ -613,5 +613,17 @@ function missingNumber(arr) {
        
     }
 
-    console.log(missingNumber( [2 ,6 ,2 ,-8, -7, 8]));
+    // console.log(missingNumber( [2 ,6 ,2 ,-8, -7, 8]));
     
+    function farthestSmallerRight(arr) {
+    let start = 0
+    let end = arr.length -1 
+
+    for (let i = 0; i < arr.length; i++) {
+      
+      
+    }
+
+  
+}
+console.log(farthestSmallerRight([2,5,1,3,2]));
