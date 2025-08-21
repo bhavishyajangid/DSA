@@ -176,7 +176,7 @@ bst.makeTree(8)
 bst.makeTree(12)
 bst.makeTree(30)
 bst.makeTree(25)
-bst.makeTree(32)
+bst.makeTree(32)    
 // bst.bfsTreeTraversal()
 // console.log(bst.searchNode(bst.root , 15));
 
