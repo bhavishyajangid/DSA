@@ -102,15 +102,88 @@ class BSTree{
             console.log(root.val);
         }
     }
+
+    bfsTreeTraversal(){
+        let queue = []
+        queue.push(this.root );
+
+        while(queue.length){
+            let current = queue.shift()
+console.log(current , queue , 'before');
+
+if(current.left){
+    queue.push(current.left)
+}
+if(current.right){
+    queue.push(current.right)
+}
+console.log(current , queue , 'after');
+        }
+    }
+
+    minValue(root){
+      if(!root.left) return root.val
+      else return this.minValue(root.left )
+    }
+
+    maxValue(root){
+        if(!root.right) return root.value
+        else return this.minValue(root.right) 
+    }
+
+    removeNode(value){
+        this.root  = this.deleteNode(this.root , value)
+    }
+
+    deleteNode(root , value){
+        // if the root is null then no node to remove 
+        if(root == null) return null    
+
+        // search the node in the tree id its smallest go right otherwise right
+        if(value < root.val) {
+            root.left = this.deleteNode(root.left , value)
+        }else if(value > root.val){
+            root.right = this.deleteNode(root.right , value)
+        }else{
+
+            // if we found the node then check it has child or not
+            if(!root.left && !root.right){
+                // if not child
+                return null
+            }else if(!root.left){
+                // if only right child
+                return root.right
+            }else if(!root.right){
+                // if only left child
+                return root.left
+            }
+            // if it has both child first replace its value of minvalue of its right node of its left node mean right node ke sabse chote left node se
+            root.val = this.minValue(root.right)
+            // then delete the node 
+            root.right = this.deleteNode(root.right  , root.val)
+        }
+
+        // return the node
+        return root
+
+    }
 }
 
 let bst = new BSTree()
 bst.makeTree(20)
 bst.makeTree(10)
+bst.makeTree(8)
+bst.makeTree(12)
 bst.makeTree(30)
-console.log(bst.searchNode(bst.root , 15));
+bst.makeTree(25)
+bst.makeTree(32)
+// bst.bfsTreeTraversal()
+// console.log(bst.searchNode(bst.root , 15));
 
 console.log(bst);
+console.log(bst.removeNode(8));
+console.log(bst);
+
 
 
 
