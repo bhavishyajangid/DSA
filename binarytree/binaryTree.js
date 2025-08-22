@@ -103,6 +103,37 @@ class BSTree{
         }
     }
 
+    findHeight(root){
+        if(root == null) return 0
+
+        let leftTrHeight = this.findHeight(root.left)
+        let rightTrHeight = this.findHeight(root.right)
+        
+        return Math.max(leftTrHeight, rightTrHeight)  + 1
+    }
+
+    countNode(root){
+         if(root == null) return 0
+
+         let leftNode = this.countNode(root.left)
+         let rightNode = this.countNode(root.right)
+
+         return leftNode + rightNode + 1
+    }
+
+    sumNode(root){
+        if(root == null){
+            return 0
+        } 
+
+        let leftSum = this.sumNode(root.left)
+        let rightSum = this.sumNode(root.right)
+
+        return leftSum + rightSum + root.val
+    }
+
+   
+
     bfsTreeTraversal(){
         let queue = []
         queue.push(this.root );
@@ -167,44 +198,94 @@ console.log(current , queue , 'after');
         return root
 
     }
+
+    1. // Given two binary trees with their root nodes root1 and root2, return true if both of them are identical, otherwise, false.
+// Note: Two trees are identical when they have the same data and the arrangement of data is also the same
+
+// Examples:
+
+// Input: root1 = [1, 2, 3, 4], root2 = [1, 2, 3, 4]
+
+// Output: true
+// Explanation: There are two trees both having 4 nodes and 3 edges, both trees are identical.
+
+ checkSame(root1 , root2){
+        if(root1 == null || root2 == null) return root1 == root2
+
+
+       let left = this.checkSame(root1.left , root2.left)
+       let right = this.checkSame(root1.right , root2.right)
+ 
+      return left && right && root.val == root2.val
+
+    }
+    
+2.  //Given two binary trees with head reference as T and S having at most N nodes. The task is to check if S is present as subtree in T.
+// A subtree of a tree T1 is a tree T2 consisting of a node in T1 and all of its descendants in T1.
+
+// Example 1:
+
+// Input:
+// T:      1          S:   3
+//       /   \            /
+//      2     3          4
+//    /  \    /
+//   N    N  4
+// Output: 1 
+// Explanation: S is present in T
+
+// Example 2:
+
+// Input:
+// T:      26         S:   26
+//        /   \           /  \
+//      10     N        10    N
+//    /    \           /  \
+//    20    30        20  30
+//   /  \            /  \
+//  40   60         40  60
+// Output: 1 
+// Explanation: 
+// S and T are both same. Hence, 
+// it can be said that S is a subtree 
+// of T.
+
+
+    isSubTree(root , subTree){
+        if(root == null ||  subTree == null) return root == subTree
+
+        if(root.val == subTree.val && this.checkSame(root , subTree)) return true
+
+        return this.isSubTree(root.left , subTree) || this.isSubTree(root.right , subTree)
+    }
 }
 
 let bst = new BSTree()
-bst.makeTree(20)
 bst.makeTree(10)
 bst.makeTree(8)
+bst.makeTree(4)
+bst.makeTree(9)
 bst.makeTree(12)
-bst.makeTree(30)
-bst.makeTree(25)
-bst.makeTree(32)    
+// bst.makeTree()
+// bst.makeTree(25)
+// bst.makeTree(32)    
 // bst.bfsTreeTraversal()
 // console.log(bst.searchNode(bst.root , 15));
 
 console.log(bst);
-console.log(bst.removeNode(8));
-console.log(bst);
+console.log(bst.sumNode(bst.root));
+
+// console.log(bst.removeNode(8));
+// console.log(bst);
 
 
 
 
-// class Solution {
-//     preorder(root) {
-//         // code here
-//         let result = []
-//         this.preOrder(root , result)
-//         return result
-//     }
-    
-//     preOrder(root , result){
-//         if(root == null) return
-        
-//         result.push(root.data)
-//         this.preOrder(root.left , result)
-//         this.preOrder(root.right , result)
-//     }
-    
-    
-// }
 
-// const pi = new Node()
-// console.log(pi.preOrder());  // return = [1, 4, 4, 2]
+
+console.log(bst.checkSame(bst.root , bst.root));
+
+
+
+
+
