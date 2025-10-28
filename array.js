@@ -21,13 +21,21 @@
 
 // some it similar like filter diffrence between the filter return all the element which satisfy the condition but the some return true or false it the condition is match
 
+ 
 // 3. some : - arr.some((item) => item > 3 )
 
 //  every find it the every element is satisfy the condtion it return true else false
+
+
+
+// console.log(arr.every((item) => item > 3));
+
 // 4. every : -  arr.every((item) => item > 3)
 
 //find return the element if the condition satisify it one element satisify the condition it return undefined
 // 5. find : - arr.find((item) => item > 3 )
+// console.log(arr.find((item) => item > 10));
+
 
 //6. concate : - add two or more array
 //   ex : -  arr.concate(arr2)
@@ -36,7 +44,11 @@
 
 //ex : - const newArr =  arr.slice(0 , 2)   // [1,2] this will print the element between the 0 to 2 index
 
+
+
 //8. splice : - splice remove the element between to the arguments and add new element which are provided by you
+
+
 
 // ex :   const arre = arr.splice(1, 2, "10")   // [1, "10" , 4,]
 //        const arre = arr.splice(starting , no of element you want to remove , new element )
@@ -64,6 +76,7 @@
 
 // 1. spread operator : -    spread operator it used to spread the elements of the array like if we have two array and we need to merge it and make a single array so we spread this array into new array using sread operator it share all the elements to the array where we spread we use spread operator using three dot
 
+// the main things is to make the dsa stettisfy and make it strong so every budy make it 
 //ex :  -
 //  let arr = [1,2,3]
 //  let arr2 = [4,5,6]
@@ -138,6 +151,7 @@
 
 // }
 
+
 // // this logic have o(n) time complexity
 // console.log(rotateArray(array , 5))
 
@@ -187,6 +201,22 @@
 //  }
 
 //  console.log(removeDuplicate([1,1,2,3,4,4,5]))
+
+// optimised way 
+// removeDuplicates(arr) {
+//         // code here
+//         let x = 0
+        
+//         for(let i = 0 ; i < arr.length ; i++){
+//             if(arr[x] !== arr[i]){
+//                  x++
+//                 arr[x] = arr[i]
+//             }
+//         }   
+        
+//         arr.length = x+1
+//         return  arr
+//     }
 
 // 4 .  You are given an array called arr[] that has n - 1 numbers.
 //      These numbers are all different, and they are in the range from 1 to n.
@@ -242,6 +272,7 @@
 //     return expectedSum - actualSum;
 // }
 // console.log(findMissingNumber([1, 2, 4, 5])); // Output: 3
+
 
 // 5.  MOVE ALL THE ZERO TO THE RIGHT
 
@@ -306,7 +337,7 @@
 // console.log(number);
 // let j = 0
 
-//         for(let i = arr.length - 1 ;  i > j  ; i-- , j++ ){
+//         for(let i = index ;  i > j  ; i-- , j++ ){
 //             let temp = arr[i]
 //             arr[i] = arr[j]
 //             arr[j] = temp
@@ -323,7 +354,7 @@
 
 //         console.log(arr , 'second');
 
-//         for (let m = arr.length - 1 ; m > number ; m-- , number++) {
+//         for (let m = index ; m > number ; m-- , number++) {
 //             let temp = arr[number]
 //             arr[number] = arr[m]
 //             arr[m] = temp
@@ -403,6 +434,8 @@
 
 // console.log(findLeaders(arr))
 
+// explanation : - we start from the last element and we keep track of the maxRight if we found any element which is greater than the maxRight we update the maxRight and we store that element at the index position and decrement the index so at last we have all the leader element from index to n-1 so we copy that element to starting of the array and update the length of the array
+
 // 9.  Given an array arr of integers, find all the elements that occur more than once in the array. If no element repeats, return an empty array.
 
 // UNOPTIMISED WAY
@@ -434,6 +467,8 @@
 // }
 
 // console.log(findDuplicate(arr));
+
+
 
 // OPTIMISED WAY
 // const findDuplicate = (arr) => {
@@ -558,3 +593,4 @@ function hasTripletSum(arr, target) {
 }
 
 // console.log(hasTripletSum([1, 4, 45, 6, 10, 8], 13));
+
