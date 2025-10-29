@@ -141,3 +141,46 @@ console.log(isValid(string1));
 
 // Time Complexity = O(n)
 // Space Complexity = O(n)
+
+
+// Given an integer k and a queue of integers, we need to reverse the order of the first k elements of the queue, leaving the other elements in the same relative order.
+
+// Only following standard operations are allowed on queue.
+
+// enqueue(x) : Add an item x to rear of queue
+// dequeue() : Remove an item from front of queue
+// size() : Returns number of elements in queue.
+// front() : Finds front item.
+// Note: The above operations represent the general processings. In-built functions of the respective languages can be used to solve the problem.
+
+// "If the size of queue is smaller than the given k , then return the original queue."
+
+// Input: q = [1, 2, 3, 4, 5], k = 3
+// Output: [3, 2, 1, 4, 5]
+// Explanation: After reversing the first 3 elements from the given queue the resultant queue will be 3 2 1 4 5
+
+//  if (k > q.length) return q;
+
+//     let stack = [];
+
+//     // Step 1: Push first k elements into stack
+//     for (let i = 0; i < k; i++) {
+//       stack.push(q.shift()); // remove from front
+//     }
+
+//     // Step 2: Pop from stack and push back into queue
+//     while (stack.length > 0) {
+//       q.push(stack.pop()); // add to back
+//     }
+    
+    
+
+//     // Step 3: Move the rest (n - k) elements to back to maintain order
+//     let remaining = q.length - k;
+//     for (let i = 0; i < remaining; i++) {
+//       q.push(q.shift());
+//     }
+
+//     return q;
+
+// explanation : - first make a stack then add the reversion item into the stack then again push the stack item into the queue and after the complete queue will be reverse but we need only k interger reversed so unreversed the remain interger in third time take first interger from queue and set on the last of the queue 
